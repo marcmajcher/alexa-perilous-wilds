@@ -1,8 +1,7 @@
 {
   "globals": {
     "angular": false,
-    "paper": false,
-    "io": true
+    "paper": false
   },
   "esversion": 6,
   "node": true,
@@ -15,7 +14,7 @@
   "funcscope": true,
   "maxcomplexity": 5,
   "maxdepth": 3,
-  "maxparams": 5,
+  "maxparams": 4,
   "maxstatements": 20,
   "nonbsp": true,
   "notypeof": true,

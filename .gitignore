@@ -1,11 +1,1 @@
-*.env
-npm-debug.log*
-*.log
 node_modules
-bower_components
-.gulp-scss-cache
-.DS_Store
-.nyc_output
-coverage
-.npm
-app/static
