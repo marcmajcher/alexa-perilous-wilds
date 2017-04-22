@@ -1,9 +1,9 @@
 'use strict';
 
-var Alexa = require('alexa-sdk');
-var APP_ID = undefined; // TODO replace with your app ID (OPTIONAL).
+const Alexa = require('alexa-sdk');
+const APP_ID = 'GizmetPerilousWilds'; // TODO replace with your app ID (OPTIONAL).
 
-var languageStrings = {
+const languageStrings = {
   "en": {
     "translation": {
       "FACTS": [
