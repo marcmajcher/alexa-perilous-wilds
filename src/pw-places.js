@@ -57,4 +57,4 @@ const generators = [
   () => `The ${getAdjective()} ${getNoun()}`
 ];
 
-exports.generateName = () => getRandom(generators)();
+exports.generatePlace = () => getRandom(generators)();
