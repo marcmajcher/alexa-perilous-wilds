@@ -1,3 +1,4 @@
+GeneratePlaceIntent {GeneratorType}
 GeneratePlaceIntent for a {GeneratorType}
 GeneratePlaceIntent for a {GeneratorType} name
 GeneratePlaceIntent for a random {GeneratorType}
