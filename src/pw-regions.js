@@ -1,0 +1,66 @@
+'use strict';
+
+/* eslint-env node */
+
+const terrain = [
+  'Bay', 'Bluffs', 'Bog', 'Cliffs', 'Desert', 'Downs', 'Dunes', 'Expanse',
+  'Fells', 'Fen', 'Flats', 'Foothills', 'Forest', 'Groves', 'Heath', 'Heights',
+  'Hills', 'Hollows', 'Jungle', 'Lake', 'Lowland', 'March', 'Marsh', 'Meadows',
+  'Moor', 'Morass', 'Mounds', 'Mountains', 'Peaks', 'Plains', 'Prairie',
+  'Quagmire', 'Range', 'Reach', 'Sands', 'Savanna', 'Scarps', 'Sea',
+  'Slough', 'Sound', 'Steppe', 'Swamp', 'Sweep', 'Teeth', 'Thicket',
+  'Upland', 'Wall', 'Waste', 'Wasteland', 'Woods',
+];
+
+const adjectives = [
+  'Ageless', 'Ashen', 'Black', 'Blessed', 'Blighted', 'Blue', 'Broken',
+  'Burning', 'Cold', 'Cursed', 'Dark', 'Dead', 'Deadly', 'Deep', 'Desolate',
+  'Diamond', 'Dim', 'Dismal', 'Dun', 'Eerie', 'Endless', 'Fallen', 'Far',
+  'Fell', 'Flaming', 'Forgotten', 'Forsaken', 'Frozen', 'Glittering', 'Golden',
+  'Green', 'Grim', 'Holy', 'Impassable', 'Jagged', 'Light', 'Long', 'Misty',
+  'Perilous', 'Purple', 'Red', 'Savage', 'Shadowy', 'Shattered', 'Shifting',
+  'Shining', 'Silver', 'White', 'Wicked', 'Yellow',
+];
+
+const nouns = [
+  '__NAME__', 'Ash', 'Bone', 'Darkness', '_Dead', 'Death', 'Desolation',
+  'Despair', '_Devil', 'Doom', '_Dragon', 'Fate', 'Fear', 'Fire', 'Fury',
+  '_Ghost', '_Giant', '_God', 'Gold', 'Heaven', 'Hell', 'Honor', 'Hope',
+  'Horror', '_King', 'Life', 'Light', '_Lord', 'Mist', 'Peril', '_Queen',
+  'Rain', 'Refuge', 'Regret', '_Savior', 'Shadow', 'Silver', '_Skull', '_Sky',
+  'Smoke', '_Snake', 'Sorrow', '_Storm', '_Sun', '_Thorn', 'Thunder',
+  '_Traitor', '_Troll', 'Victory', '_Witch',
+];
+
+const getRandom = list => list[Math.floor(Math.random() * list.length)];
+const getName = () => 'Gary';
+const getTerrain = () => getRandom(terrain);
+const getAdjective = () => getRandom(adjectives);
+const getNoun = (the = false) => {
+  // TBD: getName for __NAME__
+  const noun = getRandom(nouns);
+  if (noun === '__NAME__') {
+    return getName();
+  }
+  if (noun.indexOf('_') < 0) {
+    return noun;
+  }
+  return `${the ? 'The ' : ''}${noun.slice(1)}`;
+};
+
+const generators = [
+  () => `The ${getAdjective()} ${getTerrain()}`,
+  () => `The ${getAdjective()} ${getTerrain()}`,
+  () => `The ${getAdjective()} ${getTerrain()}`,
+  () => `The ${getAdjective()} ${getTerrain()}`,
+  () => `${getTerrain()} of ${getNoun(true)}`,
+  () => `${getTerrain()} of ${getNoun(true)}`,
+  () => `The ${getTerrain()} ${getAdjective()}`,
+  () => `The ${getTerrain()} ${getAdjective()}`,
+  () => `The ${getNoun()} ${getTerrain()}`,
+  () => `The ${getNoun()} ${getTerrain()}`,
+  () => `${getNoun(true)}'s ${getAdjective()} ${getTerrain()}`,
+  () => `The ${getAdjective()} ${getTerrain()} of ${getNoun(true)}`
+];
+
+exports.generateRegion = () => getRandom(generators)();
