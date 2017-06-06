@@ -1,4 +1,7 @@
 {
+  "dependencies": {
+    "alexa-sdk": "^1.0.6"
+  },
   "devDependencies": {
     "del": "^2.2.2",
     "gulp-eslint": "^3.0.1",

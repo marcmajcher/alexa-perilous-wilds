@@ -39,7 +39,7 @@ gulp.task('jshint', () =>
 );
 
 gulp.task('build', () =>
-  gulp.src('src/*.js')
+  gulp.src('src/**/*')
   .pipe(zip('AlexaPerilousWilds.zip'))
   .pipe(gulp.dest('dist'))
 );
