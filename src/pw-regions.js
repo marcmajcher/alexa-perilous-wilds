@@ -36,7 +36,7 @@ const getRandom = list => list[Math.floor(Math.random() * list.length)];
 const getName = () => 'Gary';
 const getTerrain = () => getRandom(terrain);
 const getAdjective = () => getRandom(adjectives);
-const getNoun = (the = false) => {
+const getNoun = (the = false, possessive = false) => {
   // TBD: getName for __NAME__
   const noun = getRandom(nouns);
   if (noun === '__NAME__') {
@@ -45,20 +45,18 @@ const getNoun = (the = false) => {
   if (noun.indexOf('_') < 0) {
     return noun;
   }
-  return `${the ? 'The ' : ''}${noun.slice(1)}`;
+  return `${the ? 'The ' : ''}${noun.slice(1)}${possessive ? '\'s' : ''}`;
 };
 
 const generators = [
   () => `The ${getAdjective()} ${getTerrain()}`,
   () => `The ${getAdjective()} ${getTerrain()}`,
   () => `The ${getAdjective()} ${getTerrain()}`,
-  () => `The ${getAdjective()} ${getTerrain()}`,
   () => `${getTerrain()} of ${getNoun(true)}`,
   () => `${getTerrain()} of ${getNoun(true)}`,
   () => `The ${getTerrain()} ${getAdjective()}`,
-  () => `The ${getTerrain()} ${getAdjective()}`,
-  () => `The ${getNoun()} ${getTerrain()}`,
-  () => `The ${getNoun()} ${getTerrain()}`,
+  () => `The ${getNoun(false, true)} ${getTerrain()}`,
+  () => `The ${getNoun(false, true)} ${getTerrain()}`,
   () => `${getNoun(true)}'s ${getAdjective()} ${getTerrain()}`,
   () => `The ${getAdjective()} ${getTerrain()} of ${getNoun(true)}`
 ];
