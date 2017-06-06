@@ -14,7 +14,7 @@ const STOP_MESSAGE = 'Goodbye.';
 
 const handlers = {
   LaunchRequest: function() {
-    this.emit('GetPlace');
+    this.emit('GeneratePlaceIntent');
   },
   GeneratePlaceIntent: function GeneratePlaceIntent() {
     const placeName = places.generatePlace();
