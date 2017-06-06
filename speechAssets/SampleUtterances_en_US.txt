@@ -1,18 +1,16 @@
-GeneratePlaceIntent for a location
-GeneratePlaceIntent for a location name
-GeneratePlaceIntent for a place
-GeneratePlaceIntent for a place name
-GeneratePlaceIntent for a random location
-GeneratePlaceIntent for a random place
-GeneratePlaceIntent for the name of a location
-GeneratePlaceIntent for the name of a place
-GeneratePlaceIntent give me a location
-GeneratePlaceIntent give me a location name
-GeneratePlaceIntent give me a place name
-GeneratePlaceIntent give me a random location
-GeneratePlaceIntent give me a random place
-GeneratePlaceIntent give me the name of a location
-GeneratePlaceIntent give me the name of a place
-GeneratePlaceIntent tell me a place name
-GeneratePlaceIntent tell me the name of a location
-GeneratePlaceIntent tell me the name of a place
+GeneratePlaceIntent for a {GeneratorType}
+GeneratePlaceIntent for a {GeneratorType} name
+GeneratePlaceIntent for a random {GeneratorType}
+GeneratePlaceIntent for a random {GeneratorType} name
+GeneratePlaceIntent for the name of a {GeneratorType}
+GeneratePlaceIntent for the name of a random {GeneratorType}
+GeneratePlaceIntent give me a {GeneratorType}
+GeneratePlaceIntent give me a {GeneratorType} name
+GeneratePlaceIntent give me a random {GeneratorType}
+GeneratePlaceIntent give me a random {GeneratorType} name
+GeneratePlaceIntent give me the name of a {GeneratorType}
+GeneratePlaceIntent give me the name of a random {GeneratorType}
+GeneratePlaceIntent tell me a {GeneratorType} name
+GeneratePlaceIntent tell me a random {GeneratorType} name
+GeneratePlaceIntent tell me the name of a {GeneratorType}
+GeneratePlaceIntent tell me the name of a random {GeneratorType}

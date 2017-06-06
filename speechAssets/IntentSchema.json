@@ -1,7 +1,11 @@
 {
   "intents": [
     {
-      "intent": "GeneratePlaceIntent"
+      "intent": "GenerateIntent",
+      "slots": [{
+        "name": "GeneratorType",
+        "type": "GENERATOR_TYPES"
+        }]
     },
     {
       "intent": "AMAZON.HelpIntent"

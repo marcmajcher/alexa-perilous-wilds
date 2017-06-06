@@ -3,7 +3,14 @@
 /* eslint-env node */
 
 const Alexa = require('alexa-sdk');
-const places = require('./pw-places');
+const place = require('./pw-places');
+const region = require('./pw-regions');
+
+const generators = {
+  place,
+  region,
+  location: place
+};
 
 const APP_ID = 'GizmetPerilousWilds'; // TODO replace with your app ID (OPTIONAL).
 const SKILL_NAME = 'The Perilous Wilds';
@@ -13,13 +20,14 @@ const HELP_REPROMPT = 'What can I do for you?';
 const STOP_MESSAGE = 'Goodbye.';
 
 const handlers = {
-  LaunchRequest: function() {
-    this.emit('GeneratePlaceIntent');
+  LaunchRequest: function LaunchRequest() {
+    this.emit('GenerateIntent'); // TODO: ask for what they want
   },
-  GeneratePlaceIntent: function GeneratePlaceIntent() {
-    const placeName = places.generatePlace();
-    const speechOutput = `${GET_PLACE_MESSAGE} ${placeName}`;
-    this.emit(':tellWithCard', speechOutput, SKILL_NAME, placeName);
+  GenerateIntent: function GenerateIntent() {
+    const generatorType = this.event.request.intent.slots.GeneratorType;
+    const generatedResponse = generators[generatorType].generate();
+    const speechOutput = `${GET_PLACE_MESSAGE} ${generatedResponse}`;
+    this.emit(':tellWithCard', speechOutput, SKILL_NAME, generatedResponse);
   },
   'AMAZON.HelpIntent': function HelpIntent() {
     const speechOutput = HELP_MESSAGE;

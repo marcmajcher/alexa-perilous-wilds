@@ -61,4 +61,4 @@ const generators = [
   () => `The ${getAdjective()} ${getTerrain()} of ${getNoun(true)}`
 ];
 
-exports.generateRegion = () => getRandom(generators)();
+exports.generate = () => getRandom(generators)();

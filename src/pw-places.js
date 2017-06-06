@@ -48,13 +48,14 @@ const getNoun = (the = false) => {
   return `${the ? 'The ' : ''}${noun.slice(1)}`;
 };
 
+const HALF = 0.5;
 const generators = [
   // () => `The ${getPlace()}`,
   () => `The ${getAdjective()} ${getPlace()}`,
   () => `The ${getPlace()} of ${getNoun(true)}`,
-  () => `${getNoun(Math.random() < 0.5)}'s ${getPlace()}`,
+  () => `${getNoun(Math.random() < HALF)}'s ${getPlace()}`,
   () => `${getPlace()} of the ${getAdjective()} ${getNoun()}`,
   () => `The ${getAdjective()} ${getNoun()}`
 ];
 
-exports.generatePlace = () => getRandom(generators)();
+exports.generate = () => getRandom(generators)();
