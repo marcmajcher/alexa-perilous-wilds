@@ -1,6 +1,6 @@
 'use strict';
 
-/* eslint-env node */
+// /* eslint-env node */
 
 const del = require('del');
 const eslint = require('gulp-eslint');
@@ -40,7 +40,7 @@ gulp.task('jshint', () =>
 
 gulp.task('build', () =>
   gulp.src('src/*.js')
-  .pipe(zip('AlexaSuggestions.zip'))
+  .pipe(zip('AlexaPerilousWilds.zip'))
   .pipe(gulp.dest('dist'))
 );
 
