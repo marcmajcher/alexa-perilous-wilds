@@ -49,10 +49,10 @@ const getNoun = (the = false) => {
 };
 
 const generators = [
-  () => `The ${getPlace()}`,
+  // () => `The ${getPlace()}`,
   () => `The ${getAdjective()} ${getPlace()}`,
   () => `The ${getPlace()} of ${getNoun(true)}`,
-  () => `${getNoun()}'s ${getPlace()}`,
+  () => `${getNoun(Math.random() < 0.5)}'s ${getPlace()}`,
   () => `${getPlace()} of the ${getAdjective()} ${getNoun()}`,
   () => `The ${getAdjective()} ${getNoun()}`
 ];
