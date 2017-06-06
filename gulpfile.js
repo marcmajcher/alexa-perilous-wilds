@@ -10,7 +10,8 @@ const zip = require('gulp-zip');
 
 const lintable = [
   'gulpfile.js',
-  'src/**/*.js'
+  'src/**/*.js',
+  '!node_modules/**',
 ];
 
 gulp.task('default', ['eslint', 'jshint', 'clean', 'build']);

@@ -13,23 +13,23 @@ const HELP_REPROMPT = 'What can I do for you?';
 const STOP_MESSAGE = 'Goodbye.';
 
 const handlers = {
-  LaunchRequest: () => {
+  LaunchRequest: function() {
     this.emit('GetPlace');
   },
-  GeneratePlaceIntent: () => {
+  GeneratePlaceIntent: function GeneratePlaceIntent() {
     const placeName = places.generatePlace();
     const speechOutput = `${GET_PLACE_MESSAGE} ${placeName}`;
     this.emit(':tellWithCard', speechOutput, SKILL_NAME, placeName);
   },
-  'AMAZON.HelpIntent': () => {
+  'AMAZON.HelpIntent': function HelpIntent() {
     const speechOutput = HELP_MESSAGE;
     const reprompt = HELP_REPROMPT;
     this.emit(':ask', speechOutput, reprompt);
   },
-  'AMAZON.CancelIntent': () => {
+  'AMAZON.CancelIntent': function CancelIntent() {
     this.emit(':tell', STOP_MESSAGE);
   },
-  'AMAZON.StopIntent': () => {
+  'AMAZON.StopIntent': function StopIntent() {
     this.emit(':tell', STOP_MESSAGE);
   }
 };
