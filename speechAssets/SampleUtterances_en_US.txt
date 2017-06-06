@@ -1,14 +1,18 @@
-GetNewFactIntent a fact
-GetNewFactIntent a space fact
-GetNewFactIntent tell me a fact
-GetNewFactIntent tell me a space fact
-GetNewFactIntent give me a fact
-GetNewFactIntent give me a space fact
-GetNewFactIntent tell me trivia
-GetNewFactIntent tell me a space trivia
-GetNewFactIntent give me trivia
-GetNewFactIntent give me a space trivia
-GetNewFactIntent give me some information
-GetNewFactIntent give me some space information
-GetNewFactIntent tell me something
-GetNewFactIntent give me something
+GeneratePlaceIntent for a location
+GeneratePlaceIntent for a location name
+GeneratePlaceIntent for a place
+GeneratePlaceIntent for a place name
+GeneratePlaceIntent for a random location
+GeneratePlaceIntent for a random place
+GeneratePlaceIntent for the name of a location
+GeneratePlaceIntent for the name of a place
+GeneratePlaceIntent give me a location
+GeneratePlaceIntent give me a location name
+GeneratePlaceIntent give me a place name
+GeneratePlaceIntent give me a random location
+GeneratePlaceIntent give me a random place
+GeneratePlaceIntent give me the name of a location
+GeneratePlaceIntent give me the name of a place
+GeneratePlaceIntent tell me a place name
+GeneratePlaceIntent tell me the name of a location
+GeneratePlaceIntent tell me the name of a place
