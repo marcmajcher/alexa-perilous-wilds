@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-exports.roll = dice => {
+exports.roll = (dice = '1d6') => {
   // dice formats: d6, 3d8, d10x100, 3d12x10, etc.
   const diceRegex = /^(\d*)d(\d+)x?(\d*)$/;
   let [_, number, dieSize, times] = dice.match(diceRegex);

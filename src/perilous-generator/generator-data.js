@@ -79,6 +79,7 @@ exports.region = {
 }
 
 const treasure = [
+  'Nothing',
   '{2d8} coins',
   '_UTILITYITEM_',
   '{4d10} coins',
@@ -87,7 +88,7 @@ const treasure = [
   'A useful _CLUE_',
   'A bag of {1d4x100} coins',
   'A small _VALUABLE_ of great value, worth {2d6x100} coins',
-  'A chest of coins and gems worth {3d6x100} coins',
+  'A chest of coins and gems, worth {3d6x100} coins',
   'A magical item, or magical effect',
   'Several bags of cointaining {2d4x100} coins',
   'A _SIGNOFOFFICE_ worth at least {3d4x100} coins',
@@ -103,7 +104,7 @@ const utilityItems = [
   'A key', 'A lockpick', 'A potion', 'Some food', 'Some clothing', 'A cloak',
   'A decanter', 'A cup', 'A small cage', 'A small empty coffer', 'An empty box',
   'A musical instrument', 'A tool', 'A book', 'A scroll', 'A weapon', 'A staff',
-  'A wand', 'A vessel', 'A key', 'Some good food', 'Some clothes', 'An old book',
+  'A wand', 'A vase', 'A key', 'Some good food', 'Some clothes', 'An old book',
   'A piece of armor', 'A shield', 'A helm', 'A mirror', 'A small mirror',
   'An hourglass', 'A pet', 'A mount', 'A small pet', 'A device',
   'A small device', 'A construct'
@@ -116,6 +117,7 @@ const artItems = [
   'sigil', 'rod', 'crown', 'scepter'
 ];
 
+const gems = ['diamond', 'ruby', 'sapphire', 'emerald', 'opal', 'pearl'];
 const clues = ['map', 'note'];
 const portals = ['portal', 'secret path', 'magical portal', 'hidden pathway'];
 const signsOfOffice = ['crown', 'banner', 'signet ring', 'sign of office'];
@@ -126,5 +128,6 @@ exports.treasure = {
   artItems,
   clues,
   portals,
-  signsOfOffice
+  signsOfOffice,
+  gems
 };

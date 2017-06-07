@@ -30,5 +30,4 @@ const generators = [
   () => `The ${getAdjective()} ${getNoun()}`
 ];
 
-console.log(g.random)
 exports.generate = () => g.random(generators)();

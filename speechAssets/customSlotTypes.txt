@@ -2,3 +2,4 @@ GENERATOR_TYPES
 place
 location
 terrain
+treasure
