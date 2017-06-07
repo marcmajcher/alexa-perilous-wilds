@@ -17,7 +17,7 @@ const generatorMessages = {
   location: 'This place is called',
   region: 'This region is called',
   treasure: 'You found: ',
-}
+};
 
 const handlers = {
   LaunchRequest: function LaunchRequest() {

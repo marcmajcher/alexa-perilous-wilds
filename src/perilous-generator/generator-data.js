@@ -38,7 +38,7 @@ exports.place = {
   places,
   adjectives: placeAdjectives,
   nouns: placeNouns
-}
+};
 
 /* Data for regions */
 
@@ -76,7 +76,9 @@ exports.region = {
   terrain,
   adjectives: regionAdjectives,
   nouns: regionNouns
-}
+};
+
+/* Data for treasures */
 
 const treasure = [
   'Nothing',
@@ -132,38 +134,46 @@ exports.treasure = {
   gems
 };
 
-const discoveries = [
-  'unnaturalFeature',
-  'naturalFeature',
-  'naturalFeature',
-  'naturalFeature',
-  'evidence',
-  'evidence',
-  'creature',
-  'creature',
-  'structure'
-  'structure'
-  'structure'
-  'structure'
-];
+/* Data for discoveries */
 
-const discoveryUnnaturalFeatures = [
+const discoveryArcane = {
+  size: 12,
+  table: [{
+      range: 2,
+      name: 'resdiue'
+    },
+    {
+      range: 5,
+      name: 'blight'
+    },
+    {
+      range: 6,
+      name: 'mutation'
+    },
+    {
+      range: 7,
+      name: 'alteration'
+    },
+    {
+      range: 10,
+      name: 'enchantment'
+    },
+    {
+      range: 11,
+      name: 'source'
+    },
+    {
+      range: 12,
+      name: 'repository'
+    },
+  ],
+  tags: [
+    'alignment',
+    'magicType'
+  ],
+  template: '_AAN_ _alignment_ _magicType_ _RESULT_'
+};
 
-];
-const discoveryNaturalFeatures = [
-
-];
-const discoveryEvidence = [
-
-];
-const discoveryUnnaturalFeatures = [
-
-];
-
-const discoveryArcane = [
-  'residue', 'residue', 'blight', 'blight', 'blight', 'alteration', 'mutation',
-  'enchantment', 'enchantment', 'enchantment', 'source', 'repository'
-];
 const discoveryPlanar = [
   'distortion', 'distortion', 'warp', 'warp', 'portal', 'portal', 'gate',
   'gate', 'rift', 'tear', 'outpost', 'outpost'
@@ -173,12 +183,36 @@ const discoveryDivine = [
   'hallowed place', 'hallowed place', 'hallowed place', 'watched place',
   'watched place', 'presence'
 ];
-const discoveryLair = [];
-const discoveryObstacle = [];
-const discoveryTerrainChange = [];
-const discoveryWaterFeature = [];
-const discoveryLandmark = [];
-const discoveryResource = [];
+const discoveryLair = [
+  'burrow', 'burrow', 'burrow', 'cave', 'cave', 'tunnels', 'tunnels', 'nest',
+  'aerie', 'hive', '_RUINS_'
+];
+const discoveryObstacle = [
+  'difficult ground', 'difficult ground', 'difficult ground',
+  'difficult ground', 'difficult ground', 'cliff', 'crevasse', 'chasm'
+];
+const discoveryTerrainChange = [
+  'limited area of another _TERRAINTYPE_',
+  'limited area of another _TERRAINTYPE_',
+  'limited area of another _TERRAINTYPE_',
+  'limited area of another _TERRAINTYPE_',
+  'crevice', 'hole', 'pit', 'cave', 'altitude change', 'altitude change',
+  'canyon', 'valley', 'rise in distance', 'peak in distance'
+];
+const discoveryWaterFeature = [
+  'spring', 'hot spring', 'waterfall', 'geyser', 'creek', 'stream', 'creek',
+  'brook', 'stream', 'creek', 'brook', 'stream', 'pond', 'pond', 'lake',
+  'lake', 'river', 'river', 'river', 'river', 'sea', 'sea', 'ocean', 'ocean'
+];
+const discoveryLandmark = [
+  'landmark geyser', 'landmark waterfall', 'landmark waterfall', 'ancient tree',
+  'giant flowers', 'grove', 'crater', 'rock formation', 'crater',
+  'rock formation', '_ODDITY_', '_ODDITY_',
+];
+const discoveryResource = [
+  'game', 'fruit', 'vegetable', 'game', 'herb', 'spice', 'timber', 'stone',
+  'dye source', 'copper ore', 'iron ore', 'precious metal'
+];
 const discoveryTracks = [];
 const discoveryRemains = [];
 const discoveryStash = [];
@@ -187,3 +221,118 @@ const discoveryInfrastructure = [];
 const discoveryDwelling = [];
 const discoveryBurial = [];
 const discoveryRuin = [];
+
+const discoveryUnnaturalFeatures = {
+  size: 12,
+  table: [{
+      range: 9,
+      table: discoveryArcane
+    },
+    {
+      range: 11,
+      table: discoveryPlanar
+    },
+    {
+      range: 12,
+      table: discoveryDivine
+    }
+  ]
+};
+
+const discoveryNaturalFeatures = {
+  size: 12,
+  table: [{
+      range: 2,
+      table: discoveryLair
+    }, {
+      range: 4,
+      table: discoveryObstacle
+    }, {
+      range: 7,
+      table: discoveryTerrainChange
+    },
+    {
+      range: 9,
+      table: discoveryWaterFeature
+    }, {
+      range: 11,
+      table: discoveryLandmark
+    }, {
+      range: 12,
+      table: discoveryResource
+    }
+  ]
+};
+
+const discoveryEvidence = {
+  size: 12,
+  table: [{
+      range: 6,
+      table: discoveryTracks
+    },
+    {
+      range: 10,
+      table: discoveryRemains
+    },
+    {
+      range: 12,
+      table: discoveryStash
+    },
+  ]
+};
+
+const discoveryStructures = {
+  size: 12,
+  table: [{
+      range: 1,
+      table: discoveryEnigmatic
+    },
+    {
+      range: 3,
+      table: discoveryInfrastructure
+    },
+    {
+      range: 4,
+      table: discoveryDwelling
+    },
+    {
+      range: 6,
+      table: discoveryBurial
+    },
+    {
+      range: 8,
+      table: 'steading'
+    },
+    {
+      range: 12,
+      table: discoveryRuin
+    },
+  ]
+};
+
+const discoveries = {
+  size: 12,
+  table: [{
+      range: 1,
+      table: discoveryUnnaturalFeatures
+    },
+    {
+      range: 4,
+      table: discoveryNaturalFeatures
+    },
+    {
+      range: 6,
+      table: discoveryEvidence
+    },
+    {
+      range: 8,
+      table: 'creature'
+    },
+    {
+      range: 12,
+      table: discoveryStructure
+    },
+  ]
+};
+
+exports.discovery = discoveries;

@@ -5,7 +5,7 @@
 const del = require('del');
 const eslint = require('gulp-eslint');
 const gulp = require('gulp');
-const jshint = require('gulp-jshint');
+// const jshint = require('gulp-jshint');
 const zip = require('gulp-zip');
 
 const lintable = [
@@ -14,8 +14,10 @@ const lintable = [
   '!src/node_modules/**',
 ];
 
-gulp.task('default', ['eslint', 'jshint', 'clean', 'build']);
-gulp.task('lint', ['eslint', 'jshint', 'lwatch']);
+gulp.task('default', ['eslint', 'clean', 'build']);
+gulp.task('lint', ['eslint', 'lwatch']);
+// gulp.task('default', ['eslint', 'jshint', 'clean', 'build']);
+// gulp.task('lint', ['eslint', 'jshint', 'lwatch']);
 
 gulp.task('clean', () =>
   del([
@@ -33,11 +35,11 @@ gulp.task('eslint', () =>
   })
 );
 
-gulp.task('jshint', () =>
-  gulp.src(lintable)
-  .pipe(jshint())
-  .pipe(jshint.reporter('jshint-stylish'))
-);
+// gulp.task('jshint', () =>
+//   gulp.src(lintable)
+//   .pipe(jshint())
+//   .pipe(jshint.reporter('jshint-stylish'))
+// );
 
 gulp.task('build', () =>
   gulp.src('src/**/*')
@@ -46,9 +48,11 @@ gulp.task('build', () =>
 );
 
 gulp.task('watch', () =>
-  gulp.watch(lintable, ['jshint', 'eslint', 'build'])
+  gulp.watch(lintable, ['eslint', 'build'])
+  // gulp.watch(lintable, ['jshint', 'eslint', 'build'])
 );
 
 gulp.task('lwatch', () =>
-  gulp.watch(lintable, ['jshint', 'eslint'])
+  gulp.watch(lintable, ['eslint'])
+  // gulp.watch(lintable, ['jshint', 'eslint'])
 );
