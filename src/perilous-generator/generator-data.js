@@ -131,3 +131,59 @@ exports.treasure = {
   signsOfOffice,
   gems
 };
+
+const discoveries = [
+  'unnaturalFeature',
+  'naturalFeature',
+  'naturalFeature',
+  'naturalFeature',
+  'evidence',
+  'evidence',
+  'creature',
+  'creature',
+  'structure'
+  'structure'
+  'structure'
+  'structure'
+];
+
+const discoveryUnnaturalFeatures = [
+
+];
+const discoveryNaturalFeatures = [
+
+];
+const discoveryEvidence = [
+
+];
+const discoveryUnnaturalFeatures = [
+
+];
+
+const discoveryArcane = [
+  'residue', 'residue', 'blight', 'blight', 'blight', 'alteration', 'mutation',
+  'enchantment', 'enchantment', 'enchantment', 'source', 'repository'
+];
+const discoveryPlanar = [
+  'distortion', 'distortion', 'warp', 'warp', 'portal', 'portal', 'gate',
+  'gate', 'rift', 'tear', 'outpost', 'outpost'
+];
+const discoveryDivine = [
+  'mark', 'sign', 'sign', 'cursed place', 'cursed place', 'cursed place',
+  'hallowed place', 'hallowed place', 'hallowed place', 'watched place',
+  'watched place', 'presence'
+];
+const discoveryLair = [];
+const discoveryObstacle = [];
+const discoveryTerrainChange = [];
+const discoveryWaterFeature = [];
+const discoveryLandmark = [];
+const discoveryResource = [];
+const discoveryTracks = [];
+const discoveryRemains = [];
+const discoveryStash = [];
+const discoveryEnigmatic = [];
+const discoveryInfrastructure = [];
+const discoveryDwelling = [];
+const discoveryBurial = [];
+const discoveryRuin = [];

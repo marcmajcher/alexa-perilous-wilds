@@ -1,5 +1,6 @@
 * Add proper attributions for CC license for Perilous Wilds and Noun Project
 * Add treasure generator (p. 43)
+  - Add monster options 
 * Add discovery generator (p. 44)
 * Add steading generator (p. 46)
 * Add danger generator (p. 48)
