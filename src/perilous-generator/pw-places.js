@@ -3,14 +3,14 @@
 /* eslint-env node */
 
 const data = require('./generator-data').place;
+const g = require('./util');
 
-const getRandom = list => list[Math.floor(Math.random() * list.length)];
 const getName = () => 'Gary';
-const getPlace = () => getRandom(data.places);
-const getAdjective = () => getRandom(data.adjectives);
+const getPlace = () => g.random(data.places);
+const getAdjective = () => g.random(data.adjectives);
 const getNoun = (the = false) => {
   // TBD: getName for __NAME__
-  const noun = getRandom(data.nouns);
+  const noun = g.random(data.nouns);
   if (noun === '__NAME__') {
     return getName();
   }
@@ -30,4 +30,5 @@ const generators = [
   () => `The ${getAdjective()} ${getNoun()}`
 ];
 
-exports.generate = () => getRandom(generators)();
+console.log(g.random)
+exports.generate = () => g.random(generators)();

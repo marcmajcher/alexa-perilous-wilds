@@ -3,13 +3,7 @@
 /* eslint-env node */
 
 const Alexa = require('alexa-sdk');
-const place = require('./pw-places');
-const region = require('./pw-regions');
-const generators = {
-  place,
-  region,
-  location: place
-};
+const generators = require('./perilous-generator/generator');
 
 const APP_ID = 'GizmetPerilousWilds'; // TODO replace with your app ID (OPTIONAL).
 const SKILL_NAME = 'The Perilous Wilds';
