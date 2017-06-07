@@ -34,4 +34,3 @@
   * Oloru, Sky-God's Home
   * Valkoina, Land of the White Lion
   * The Tamanarugan Empire
-  

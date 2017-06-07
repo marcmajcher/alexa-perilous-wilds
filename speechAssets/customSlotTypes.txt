@@ -1,1 +1,4 @@
-GENERATOR_TYPES : place | location | terrain
+GENERATOR_TYPES
+place
+location
+terrain

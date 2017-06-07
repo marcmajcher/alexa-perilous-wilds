@@ -8,6 +8,9 @@
         }]
     },
     {
+      "intent": "GeneratePlaceIntent"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {
