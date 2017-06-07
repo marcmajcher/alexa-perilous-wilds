@@ -5,7 +5,6 @@
 const Alexa = require('alexa-sdk');
 const place = require('./pw-places');
 const region = require('./pw-regions');
-
 const generators = {
   place,
   region,
