@@ -330,7 +330,7 @@ const discoveries = {
     },
     {
       range: 12,
-      table: discoveryStructure
+      table: discoveryStructures
     },
   ]
 };
