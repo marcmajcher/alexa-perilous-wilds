@@ -7,11 +7,11 @@ const generators = require('./perilous-generator/generator');
 
 const APP_ID = 'GizmetPerilousWilds'; // TODO replace with your app ID (OPTIONAL).
 const SKILL_NAME = 'The Perilous Wilds';
-const HELP_MESSAGE = 'You can ask me to generate a place, region, or location, or, you can say exit ... What can I do for you?';
-const HELP_REPROMPT = 'Would you like me to generate a place, region, or location?';
+const HELP_MESSAGE = 'You can ask me to generate a place, region, or treasure, or, you can say exit ... What can I do for you?';
+const HELP_REPROMPT = 'Would you like me to generate a place, region, or treasure?';
 const STOP_MESSAGE = 'Venture forth!';
-const GENERATOR_NOT_FOUND_MESSAGE = 'I don\'t know how to make that kind of thing. Ask for a place, region, or location.';
-const GENERATOR_NOT_FOUND_REPROMPT = 'Would you like me to generate a place, region, or location?';
+const GENERATOR_NOT_FOUND_MESSAGE = 'I don\'t know how to do that. Please ask for a place, region, or treasure.';
+const GENERATOR_NOT_FOUND_REPROMPT = 'Would you like me to generate a place, region, or treasure?';
 const generatorMessages = {
   place: 'This place is called',
   location: 'This place is called',
