@@ -1,5 +1,5 @@
 GENERATOR_TYPES
 place
 location
-terrain
+region
 treasure
