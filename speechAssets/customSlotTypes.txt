@@ -3,3 +3,24 @@ place
 location
 region
 treasure
+
+DETAIL_TYPES
+ability
+activity
+adjective
+age
+alignment
+aspect
+condition
+disposition
+element
+feature
+magic type
+number appearing
+oddity
+orientation
+ruination
+size
+tag
+terrain
+visibility

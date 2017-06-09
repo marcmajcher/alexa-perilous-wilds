@@ -5,12 +5,14 @@
 const place = require('./pw-places');
 const region = require('./pw-regions');
 const treasure = require('./pw-treasure');
-const name = require('./pw-names');
+const names = require('./pw-names');
+const detail = require('./pw-details');
 
 module.exports = {
   place,
   region,
   treasure,
-  name,
+  name: names,
+  detail,
   location: place
 };
