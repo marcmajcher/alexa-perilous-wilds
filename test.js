@@ -30,3 +30,18 @@ console.log(gen.treasure.generate({
   lord: true,
   ancient: true
 }));
+
+console.log('\nNames:\n----------');
+console.log(gen.name.generate());
+console.log(gen.name.generate('male'));
+console.log(gen.name.generate('female'));
+console.log(gen.name.generate('steading'));
+console.log(gen.name.generate('mount'));
+console.log(gen.name.generate('male', 'Arpad'));
+console.log(gen.name.generate('female', 'Oloru'));
+console.log(gen.name.generate('steading', 'Valkoina'));
+console.log(gen.name.generate('mount', 'Tamanarugan'));
+console.log(gen.name.generate('', 'Arpad'));
+console.log(gen.name.generate('', 'Oloru'));
+console.log(gen.name.generate('', 'Valkoina'));
+console.log(gen.name.generate('', 'Tamanarugan'));

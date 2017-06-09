@@ -1,4 +1,4 @@
-const names = {
+module.exports = {
   Arpad: {
     male: [
       'Agoston',
@@ -330,7 +330,7 @@ const names = {
 
     ]
   },
-  'The Tamanarugan Empire': {
+  Tamanarugan: {
     male: [
       'Ade',
       'Adi',
