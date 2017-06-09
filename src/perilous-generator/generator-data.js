@@ -336,3 +336,74 @@ const discoveries = {
 };
 
 exports.discovery = discoveries;
+
+/* Data for steadings */
+
+exports.steadings = {};
+
+
+/* Data for dangers */
+
+exports.dangers = {};
+
+
+/* Data for creatures */
+
+exports.creatures = {};
+
+
+/* Data sets for Details */
+
+/* -- Ability */
+/* -- Activity */
+/* -- Adjective */
+/* -- Age */
+/* -- Alignment */
+/* -- Aspect */
+/* -- Condition */
+/* -- Disposition */
+/* -- Element */
+/* -- Feature */
+/* -- Magic type */
+/* -- Number Appearing */
+/* -- Oddity */
+/* -- Orientation */
+/* -- Ruination */
+/* -- Size */
+/* -- Tag */
+/* -- Terrain */
+/* -- Visibility */
+
+/* Data for NPCs */
+
+exports.NPCs = {};
+
+
+/* Data for occupations */
+
+exports.occupations = {};
+
+
+/* Data for NPC traits */
+
+exports.NPCTraits = {};
+
+
+/* Data for NPC followers */
+
+exports.NPCFollowers = {};
+
+
+/* Data for dungeons */
+
+exports.dungeons = {};
+
+
+/* Data for name generators */
+
+exports.names = {};
+
+/* -- The Kingdom of Arpad */
+/* -- Oloru, Sky-God's Home */
+/* -- Valkoina, Land of the White Lion */
+/* -- The Tamanarugan Empire */
