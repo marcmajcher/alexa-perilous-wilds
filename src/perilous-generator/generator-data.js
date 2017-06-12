@@ -124,6 +124,17 @@ const clues = ['map', 'note'];
 const portals = ['portal', 'secret path', 'magical portal', 'hidden pathway'];
 const signsOfOffice = ['crown', 'banner', 'signet ring', 'sign of office'];
 
+const magicItem = {
+  table: [{
+    range: 8,
+    table: utilityItems
+  }, {
+    range: 12,
+    table: artItems
+  }],
+  template: '_AAN_ _RESULT_ of _ability_'
+};
+
 exports.treasure = {
   treasure,
   utilityItems,
@@ -131,7 +142,8 @@ exports.treasure = {
   clues,
   portals,
   signsOfOffice,
-  gems
+  gems,
+  magicItem
 };
 
 /* Data for discoveries */
@@ -282,75 +294,213 @@ const discoveryResource = {
   template: '_size_ _RESULT_ _visibility_'
 };
 
-const discoveryTracks = [
-  // 1 - 3 faint / unclear
-  // 4 - 6 definite / clear
-  // 7 - 8 multiple
-  // 9 - 10 signs of violence
-  // 11 - 12 trail of blood / other
-  // Age, Creature
-];
+const discoveryTracks = {
+  table: [{
+      range: 3,
+      name: 'faint tracks/unclear tracks'
+    }, {
+      range: 6,
+      name: 'definite tracks/clear tracks'
+    },
+    {
+      range: 8,
+      name: 'multiple tracks'
+    }, {
+      range: 10,
+      name: 'signs of violence'
+    }, {
+      range: 12,
+      name: 'trail of blood'
+    }
+  ],
+  tags: ['age', 'creature'],
+  template: '_RESULT_ from _AAN_ _age_ _creature_'
+};
 
-const discoveryRemains = [
-  // 1 - 4 bones
-  // 5 - 7 corpse / carcass
-  // 8 - 9 site of violence
-  // 10 junk / refuse
-  // 11 lost supplies / cargo
-  // 12 tools / weapons / armor
-  // Age, Visibility
-];
+const discoveryRemains = {
+  table: [{
+      range: 4,
+      name: 'bones'
+    }, {
+      range: 7,
+      name: 'corpse/carcass'
+    }, {
+      range: 9,
+      name: 'site of violence'
+    },
+    {
+      range: 10,
+      name: 'junk/refuse'
+    },
+    {
+      range: 11,
+      name: 'lost supplies/cargo'
+    },
+    {
+      range: 12,
+      name: 'tools/weapons/armor'
+    },
+  ],
+  tags: ['age', 'visibility'],
+  template: '_age_ _RESULT_ _visibility_'
+};
 
-const discoveryStash = [
-  // 1 - 3 trinkets / coins
-  // 4 - 5 tools / weapons / armor 6 - 7 map
-  // 8 - 9 food / supplies
-  // 10 - 12 treasure(p43)
-];
+const discoveryStash = {
+  table: [{
+      range: 3,
+      name: 'trinkets/coins'
+    },
+    {
+      range: 5,
+      name: 'tools/weapons/armor'
+    }, {
+      range: 7,
+      name: 'map'
+    },
+    {
+      range: 9,
+      name: 'food/supplies'
+    },
+    {
+      range: 12,
+      name: '_treasure_'
+    },
+  ]
+};
 
-const discoveryEnigmatic = [
-  // 1 - 4 earthworks
-  // 5 - 8 megalith
-  // 9 - 11 statue / idol / totem
-  // 12 Oddity
-  // Age(1 d8 + 4), Size(1 d8 + 4),
-  // Visibility
-];
+const discoveryEnigmatic = {
+  table: [{
+      range: 4,
+      name: 'earthworks'
+    },
+    {
+      range: 8,
+      name: 'megalith'
+    },
+    {
+      range: 11,
+      name: 'statue/idol/totem'
+    },
+    {
+      range: 12,
+      name: 'Oddity'
+    },
+  ],
+  tags: ['age(1d8+4)', 'size(1d8+4)', 'Visibility'],
+  template: '_AAN_ _age_ _size_ _RESULT_, _visibility_'
+};
 
-const discoveryInfrastructure = [
-  //   1 - 4 track / path
-  //   5 - 8 road
-  //   9 - 10 bridge / ford
-  //   11 mine / quarry
-  //   12 aqueduct / canal / portal
-  //   Creature responsible(1 d4 + 4)
-];
+const discoveryInfrastructure = {
+  table: [{
+      range: 4,
+      name: 'track/path'
+    },
+    {
+      range: 8,
+      name: 'road'
+    },
+    {
+      range: 10,
+      name: 'bridge/ford'
+    },
+    {
+      range: 11,
+      name: 'mine/quarry'
+    },
+    {
+      range: 12,
+      name: 'aqueduct/canal/portal'
+    },
+    //   Creature responsible(1 d4 + 4)
+  ],
+  tags: ['_creature_(1d4+4)'],
+  template: '_AAN_ _creature_\'s _RESULT_'
+};
 
-const discoveryDwelling = [
-  // 1 - 3 campsite
-  // 4 - 6 hovel / hut
-  // 7 - 8 farm
-  // 9 - 10 inn / roadhouse
-  // 11 - 12 tower / keep / estate
-  //   Creature responsible(1 d4 + 4)
-];
+const discoveryDwelling = {
+  table: [{
+      range: 3,
+      name: 'campsite'
+    },
+    {
+      range: 6,
+      name: 'hovel/hut'
+    },
+    {
+      range: 8,
+      name: 'farm'
+    },
+    {
+      range: 10,
+      name: 'inn/roadhouse'
+    },
+    {
+      range: 12,
+      name: 'tower/keep/estate'
+    },
+    //   Creature responsible(1 d4 + 4)
+  ],
+  tags: ['creature(1d4+4)'],
+  template: '_AAN_ _creature\'s _RESULT_'
+};
 
-const discoveryBurial = [
-  // 1 - 2 grave marker / barrow 3 - 4 graveyard / necropolis 5 - 6 tomb / crypt
-  // 7 - 9 shrine
-  // 10 - 11 temple / retreat
-  // 12 great temple
-  // Creature responsible(1 d4 + 4), Alignment, Aspect
-];
+const discoveryBurial = {
+  table: [{
+      range: 2,
+      name: 'grave marker/barrow'
+    },
+    {
+      range: 4,
+      name: 'graveyard/necropolis'
+    },
+    {
+      range: 6,
+      name: 'tomb/crypt'
+    },
+    {
+      range: 9,
+      name: 'shrine'
+    },
+    {
+      range: 11,
+      name: 'temple/retreat'
+    },
+    {
+      range: 12,
+      name: 'great temple'
+    },
+    // Creature responsible(1 d4 + 4), Alignment, Aspect
+  ],
+  tags: ['creature(1d4+4)', 'alignment', 'aspect'],
+  template: '_AAN_ _creature_\'s _RESULT_ of _aspect_'
+};
 
-const discoveryRuin = [
-  // 1 - 2 Infrastructure(1 d6 + 6)
-  // 3 - 4 Dwelling(1 d8 + 4)
-  // 5 - 6 Burial / Religious(1 d8 + 4)
-  // 7 - 8 Steading(1 d10 + 2)
-  // 9 - 12 Dungeon(pp60 - 61)
-  // Creature responsible(1 d4 + 4), Age(1 d8 + 4), Ruination, Visibility
-];
+const discoveryRuin = {
+  table: [{
+      range: 2,
+      name: 'Infrastructure(1 d6 + 6)'
+    },
+    {
+      range: 4,
+      name: 'Dwelling(1 d8 + 4)'
+    },
+    {
+      range: 6,
+      name: 'Burial/Religious(1 d8 + 4)'
+    },
+    {
+      range: 8,
+      name: 'Steading(1 d10 + 2)'
+    },
+    {
+      range: 12,
+      name: 'Dungeon(pp60 - 61)'
+    },
+    // Creature responsible(1 d4 + 4), Age(1 d8 + 4), Ruination, Visibility
+  ],
+  tags: ['creature(1d4+4)', 'age(1d8+4)', 'ruination', 'visibility'],
+  template: '_AAN_ _creature_\'s _age_ _RESULT_, _visibility_, ruined by _ruination_'
+};
 
 const discoveryUnnaturalFeatures = {
   table: [{
