@@ -1,4 +1,4 @@
-✓ Add proper attributions for CC license for Perilous Wilds 
+✓ Add proper attributions for CC license for Perilous Wilds
 
 ✓ Add treasure generator (p. 43)
   * Add monster options
@@ -8,26 +8,27 @@
 * Add danger generator (p. 48)
 * Add creature generator (p. 49)
 
-* Add details generators (p. 50)
-  * Ability
-  * Activity
-  * Adjective
-  * Age
-  * Alignment
-  * Aspect
-  * Condition
-  * Disposition
-  * Element
-  * Feature
-  * Magic type
-  * Number Appearing
-  * Oddity
-  * Orientation
-  * Ruination
-  * Size
-  * Tag
-  * Terrain
-  * Visibility
+✓ Add details generators (p. 50)
+  * Hook up to generator intent with options
+  ✓ Ability
+  ✓ Activity
+  ✓ Adjective
+  ✓ Age
+  ✓ Alignment
+  ✓ Aspect
+  ✓ Condition
+  ✓ Disposition
+  ✓ Element
+  ✓ Feature
+  ✓ Magic type
+  ✓ Number Appearing
+  ✓ Oddity
+  ✓ Orientation
+  ✓ Ruination
+  ✓ Size
+  ✓ Tag
+  ✓ Terrain
+  ✓ Visibility
 
 * Add NPC generator (p. 52)
 * Add Occupation generator (p.52)
