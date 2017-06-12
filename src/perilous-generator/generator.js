@@ -14,5 +14,4 @@ module.exports = {
   treasure,
   name: names,
   detail,
-  location: place
 };

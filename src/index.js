@@ -14,7 +14,6 @@ const GENERATOR_NOT_FOUND_MESSAGE = 'I don\'t know how to do that. Please ask fo
 const GENERATOR_NOT_FOUND_REPROMPT = 'Would you like me to generate a place, region, or treasure?';
 const generatorMessages = {
   place: 'This place is called',
-  location: 'This place is called',
   region: 'This region is called',
   treasure: 'You found: ',
 };
@@ -43,8 +42,6 @@ const handlers = {
       }
       else {
         // incorrect request type
-        // TBD: add ask to don't know message
-        // https://github.com/alexa/skill-sample-nodejs-howto/blob/master/src/index.js
         this.emit(':ask', GENERATOR_NOT_FOUND_MESSAGE, GENERATOR_NOT_FOUND_REPROMPT);
       }
     }
@@ -65,7 +62,7 @@ const handlers = {
   }
 };
 
-exports.handler = (event, context) => { /* ,callback */
+exports.handler = (event, context) => {
   const alexa = Alexa.handler(event, context);
   alexa.APP_ID = APP_ID;
   alexa.registerHandlers(handlers);

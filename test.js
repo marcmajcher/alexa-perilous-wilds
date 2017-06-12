@@ -4,7 +4,7 @@
 
 const gen = require('./src/perilous-generator/generator');
 
-console.log('Places/Locations:\n----------');
+console.log('Places:\n----------');
 console.log(gen.place.generate());
 console.log(gen.place.generate());
 console.log(gen.place.generate());
