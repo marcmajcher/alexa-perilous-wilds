@@ -6,7 +6,7 @@
 exports.roll = (dice = '1d6') => {
   // dice formats: d6, 3d8, d10x100, 3d12x10, etc.
   const diceRegex = /^(\d*)d(\d+)x?(\d*)$/;
-  let [_, number, dieSize, times] = dice.match(diceRegex); // eslint-disable-line
+  let [, number, dieSize, times] = dice.match(diceRegex); // eslint-disable-line
   number = isNaN(parseInt(number)) ? 1 : parseInt(number);
   dieSize = isNaN(parseInt(dieSize)) ? 1 : parseInt(dieSize);
   times = isNaN(parseInt(times)) ? 1 : parseInt(times);

@@ -343,14 +343,326 @@ exports.steadings = {};
 
 
 /* Data for dangers */
+const dangersUndead = [
+  'haunt',
+  'haunt',
+  'wisp',
+  'wisp',
+  'ghost/spectre',
+  'ghost/spectre',
+  'ghost/spectre',
+  'ghost/spectre',
+  'banshee',
+  'wraith',
+  'wight',
+  'spirit lord/spirit master',
+];
+const dangersPlanar = [
+  'imp+Small',
+  'imp+Small',
+  'imp+Small',
+  'lesser elemental',
+  'lesser elemental',
+  'lesser elemental',
+  'lesser demon/lesser horror',
+  'lesser demon/lesser horror',
+  'lesser demon/lesser horror',
+  'greater elemental',
+  'greater demon/greater horror',
+  'devil/elemental lord',
+];
+const dangersDivine = [
+  'agent',
+  'agent',
+  'agent',
+  'agent',
+  'agent',
+  'champion',
+  'champion',
+  'champion',
+  'champion',
+  'army+Horde',
+  'army+Horde',
+  'avatar'
+];
+const dangersUnnatural = [
+  'taint',
+  'blight',
+  'curse',
+  'arcane trap/arcane effect',
+  'arcane trap/arcane effect',
+  'arcane trap/arcane effect',
+  'arcane trap/arcane effect',
+  'arcane trap/arcane effect',
+  'planar trap/planar effect',
+  'planar trap/planar effect',
+  'planar trap/planar effect',
+  'divine'
+];
+const dangersNatural = [
+  'blinding mist',
+  'blinding fog',
+  'bog/mire/quicksand',
+  'bog/mire/quicksand',
+  'pitfall',
+  'sinkhole',
+  'chasm',
+  'poison',
+  'disease',
+  'flood/fire/tornado',
+  'flood/fire/tornado',
+  '_oddity_'
+];
+const dangersTrap = [
+  'alarm',
+  'alarm',
+  'ensnaring/paralyzing',
+  'ensnaring/paralyzing',
+  'ensnaring/paralyzing',
+  'injurious',
+  'injurious',
+  'injurious',
+  'gas/fire/poison',
+  'ambush',
+  'ambush',
+  'ambush',
+];
 
-exports.dangers = {};
+const dangersUnnaturalEntity = {
+  size: 'd12',
+  table: [{
+    range: 8,
+    table: dangersUndead,
+    tags: ['ability', 'activity', 'alignment', 'disposition']
+  }, {
+    range: 11,
+    table: dangersPlanar,
+    tags: ['ability', 'activity', 'alignment', 'disposition', 'element', 'feature', 'tag']
+  }, {
+    range: 12,
+    table: dangersDivine,
+    tags: ['ability', 'activity', 'alignment', 'aspect', 'disposition', 'element', 'feature', 'tag']
+  }]
+};
 
+const dangersHazard = {
+  size: 'd12',
+  table: [{
+    range: 2,
+    table: dangersUnnatural,
+    tags: ['aspect', 'visibility']
+  }, {
+    range: 10,
+    table: dangersNatural
+  }, {
+    range: 12,
+    table: dangersTrap,
+    tags: ['creature', 'aspect', 'visibility']
+  }]
+};
+
+exports.dangers = {
+  size: 'd12',
+  table: [{
+    range: 1,
+    table: dangersUnnaturalEntity
+  }, {
+    range: 6,
+    table: dangersHazard
+  }, {
+    range: 12,
+    table: exports.creatures
+  }]
+};
 
 /* Data for creatures */
 
-exports.creatures = {};
+const creaturesEarthbound = [
+  'termite/tick/louse',
+  'snail/slug/worm',
+  'ant/centipede/scorpion',
+  'snake/lizard',
+  'vole/rat/weasel',
+  'boar/pig',
+  'dog/fox/wolf',
+  'cat/lion/panther',
+  'deer/horse/camel',
+  'ox/rhino',
+  'bear/ape/gorilla',
+  'mammoth/dinosaur',
+];
+const creaturesAirborne = [
+  'mosquito/firefly',
+  'locust/dragonfly/moth',
+  'bee/wasp',
+  'chicken/duck/goose',
+  'songbird/parrot',
+  'waterfowl/gull',
+  'heron/crane/stork',
+  'crow/raven',
+  'hawk/falcon',
+  'eagle/owl',
+  'consor',
+  'pteranodon',
+];
+const creaturesWaterGoing = [
+  'insect',
+  'jelly/anemone',
+  'clam/oyster/snail',
+  'eel/snake',
+  'frog/toad',
+  'fish',
+  'crab/lobster',
+  'turtle',
+  'alligator/crocodile',
+  'dolphin/shark',
+  'squid/octopus',
+  'whale'
+];
+const creaturesCommon = [
+  'halfling+Small',
+  'halfling+Small',
+  'halfling+Small',
+  'goblin/kobold+Small',
+  'goblin/kobold+Small',
+  'dwarf/gnome+Small',
+  'dwarf/gnome+Small',
+  'orc/hobgoblin/gnoll',
+  'orc/hobgoblin/gnoll',
+  'half-elf',
+  'half-orc',
+  'elf'
+];
+const creaturesUncommon = [
+  'fey+Tiny',
+  'catfolk',
+  'dogfolk',
+  'lizardfolk/merfolk',
+  'lizardfolk/merfolk',
+  'lizardfolk/merfolk',
+  'birdfolk',
+  'ogre/troll+Large',
+  'ogre/troll+Large',
+  'ogre/troll+Large',
+  'cyclops+Large',
+  'giant+Large',
+];
+const creaturesHybrid = [
+  'centaur',
+  'centaur',
+  'werewolf/werebear',
+  'werewolf/werebear',
+  'werewolf/werebear',
+  'were_beast_',
+  '_human_ + _beast_',
+  '_human_ + _beast_',
+  '_human_ + _beast_',
+  '_human_ + _beast_',
+  '_human_ + _beast_ + _beast_',
+  '_human_ + _beast_ + _beast_',
+];
+const creaturesUnusual = [
+  'plant/fungus',
+  'plant/fungus',
+  'plant/fungus',
+  'undead _human_',
+  'undead _human_',
+  'undead _humanoid_',
+  '_beast_ + _beast_',
+  '_beast_ + _beast_',
+  '_beast_ + _ability_',
+  '_beast_ + _ability_',
+  '_beast_ + _feature_',
+  '_beast_ + _feature_',
+];
+const creaturesRare = [
+  'slime/ooze+Amorphous',
+  'creation+Construct',
+  '_beast_ + _oddity_',
+  '_unnatural_ _entity_',
+];
+const creaturesLegendary = [
+  'dragon/colossus+Huge',
+  'dragon/colossus+Huge',
+  'dragon/colossus+Huge',
+  '_unusual_ + Huge',
+  '_unusual_ + Huge',
+  '_unusual_ + Huge',
+  '_rare_ + Huge',
+  '_rare_ + Huge',
+  '_rare_ + Huge',
+  '_beast_ dragon',
+  '_unusual_ dragon',
+  '_rare_ dragon',
+];
 
+const creaturesBeast = {
+  size: 'd12',
+  table: [{
+    range: 7,
+    table: creaturesEarthbound
+  }, {
+    range: 10,
+    table: creaturesAirborne
+  }, {
+    range: 12,
+    table: creaturesWaterGoing
+  }]
+};
+const creaturesHuman = ['human'];
+
+const creaturesHumanoid = {
+  size: 'd12',
+  table: [{
+    range: 7,
+    table: creaturesCommon
+  }, {
+    range: 10,
+    table: creaturesUncommon
+  }, {
+    range: 12,
+    table: creaturesHybrid
+  }]
+};
+const creaturesMonster = {
+  size: 'd12',
+  table: [{
+    range: 7,
+    table: creaturesUnusual
+  }, {
+    range: 10,
+    table: creaturesRare
+  }, {
+    range: 12,
+    table: creaturesLegendary
+  }]
+};
+
+exports.creatures = {
+  size: 'd12',
+  table: [{
+      range: 4,
+      table: creaturesBeast,
+      tags: ['activity', 'disposition', 'number appearing', 'size']
+    },
+    {
+      range: 6,
+      table: creaturesHuman,
+      tags: ['activity', 'alignment', 'disposition', 'number appearing'] // npc tables
+    },
+    {
+      range: 8,
+      table: creaturesHumanoid,
+      tags: ['activity', 'alignment', 'disposition', 'number appearing'] // npc tables
+    },
+    {
+      range: 12,
+      table: creaturesMonster,
+      tags: ['activity', 'alignment', 'disposition', 'number appearing', 'size'],
+      optionalTags: ['ability', 'adjective', 'age', 'aspect', 'condition', 'feature', 'tags']
+    },
+  ]
+};
 
 /* Data sets for Details */
 
@@ -630,13 +942,3 @@ exports.NPCFollowers = {};
 /* Data for dungeons */
 
 exports.dungeons = {};
-
-
-/* Data for name generators */
-
-exports.names = {};
-
-/* -- The Kingdom of Arpad */
-/* -- Oloru, Sky-God's Home */
-/* -- Valkoina, Land of the White Lion */
-/* -- The Tamanarugan Empire */
