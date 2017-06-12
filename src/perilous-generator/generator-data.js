@@ -137,93 +137,222 @@ exports.treasure = {
 /* Data for discoveries */
 
 const discoveryArcane = {
-  size: 12,
   table: [{
-      range: 2,
-      name: 'resdiue'
-    },
-    {
-      range: 5,
-      name: 'blight'
-    },
-    {
-      range: 6,
-      name: 'mutation'
-    },
-    {
-      range: 7,
-      name: 'alteration'
-    },
-    {
-      range: 10,
-      name: 'enchantment'
-    },
-    {
-      range: 11,
-      name: 'source'
-    },
-    {
-      range: 12,
-      name: 'repository'
-    },
-  ],
+    range: 2,
+    name: 'resdiue'
+  }, {
+    range: 5,
+    name: 'blight'
+  }, {
+    range: 7,
+    name: 'alteration/mutation'
+  }, {
+    range: 10,
+    name: 'enchantment'
+  }, {
+    range: 12,
+    name: 'source/repository'
+  }, ],
   tags: [
-    'alignment',
-    'magicType'
+    'alignment', 'magicType'
   ],
   template: '_AAN_ _alignment_ _magicType_ _RESULT_'
 };
 
-const discoveryPlanar = [
-  'distortion', 'distortion', 'warp', 'warp', 'portal', 'portal', 'gate',
-  'gate', 'rift', 'tear', 'outpost', 'outpost'
-];
-const discoveryDivine = [
-  'mark', 'sign', 'sign', 'cursed place', 'cursed place', 'cursed place',
-  'hallowed place', 'hallowed place', 'hallowed place', 'watched place',
-  'watched place', 'presence'
-];
-const discoveryLair = [
-  'burrow', 'burrow', 'burrow', 'cave', 'cave', 'tunnels', 'tunnels', 'nest',
-  'aerie', 'hive', '_RUINS_'
-];
+const discoveryPlanar = {
+  table: [{
+      range: 4,
+      name: 'distortion/warp'
+    }, {
+      range: 8,
+      name: 'portal/gate'
+    },
+    {
+      range: 10,
+      name: 'rift/tear'
+    }, {
+      range: 12,
+      name: 'outpost'
+    }
+  ],
+  tags: ['alignment', 'element'],
+  template: '_AAN_ _RESULT_ of _alignment_ _element_'
+};
+
+const discoveryDivine = {
+  table: [{
+    range: 3,
+    name: 'mark/sign',
+  }, {
+    range: 6,
+    name: 'cursed place'
+  }, {
+    range: 9,
+    name: 'hallowed place'
+  }, {
+    range: 11,
+    name: 'watched place'
+  }, {
+    range: 12,
+    name: 'presence'
+  }],
+  tags: ['alignment', 'aspect'],
+  template: '_AAN_ _RESULT_ of _alignment_ _aspect_'
+};
+
+const discoveryLair = {
+  table: [{
+    range: 3,
+    name: 'burrow'
+  }, {
+    range: 5,
+    name: 'cave'
+  }, {
+    range: 7,
+    name: 'tunnels'
+  }, {
+    range: 9,
+    name: 'nest/aerie'
+  }, {
+    range: 10,
+    name: 'hive'
+  }, {
+    range: 12,
+    table: '_ruins_'
+  }],
+  tags: ['_creature_', '_visibility_'],
+  template: '_AAN_ _creature_ _RESULT_, _visibility_'
+};
+
 const discoveryObstacle = [
   'difficult ground', 'difficult ground', 'difficult ground',
-  'difficult ground', 'difficult ground', 'cliff', 'crevasse', 'chasm'
+  'difficult ground', 'difficult ground', 'cliff', 'crevasse', 'chasm',
+  'ravine', 'gorge', '_oddity_'
 ];
+
 const discoveryTerrainChange = [
   'limited area of another _TERRAINTYPE_',
   'limited area of another _TERRAINTYPE_',
   'limited area of another _TERRAINTYPE_',
   'limited area of another _TERRAINTYPE_',
-  'crevice', 'hole', 'pit', 'cave', 'altitude change', 'altitude change',
+  'crevice/hole/pit/cave', 'crevice/hole/pit/cave',
+  'altitude change', 'altitude change',
   'canyon', 'valley', 'rise in distance', 'peak in distance'
 ];
+
 const discoveryWaterFeature = [
-  'spring', 'hot spring', 'waterfall', 'geyser', 'creek', 'stream', 'creek',
-  'brook', 'stream', 'creek', 'brook', 'stream', 'pond', 'pond', 'lake',
-  'lake', 'river', 'river', 'river', 'river', 'sea', 'sea', 'ocean', 'ocean'
+  'spring/hot spring',
+  'waterfall/geyser',
+  'creek/stream/brook',
+  'creek/stream/brook',
+  'creek/stream/brook',
+  'creek/stream/brook',
+  'pond', 'lake',
+  'river', 'river',
+  'sea', 'ocean',
 ];
+
 const discoveryLandmark = [
-  'landmark geyser', 'landmark waterfall', 'landmark waterfall', 'ancient tree',
-  'giant flowers', 'grove', 'crater', 'rock formation', 'crater',
-  'rock formation', '_ODDITY_', '_ODDITY_',
+  'landmark _waterfeature_',
+  'ancient tree',
+  'giant flowers',
+  'grove',
+  'peak/rock formation/crater',
+  'peak/rock formation/crater',
+  'peak/rock formation/crater',
+  'peak/rock formation/crater',
+  '_oddity_', '_oddity_',
 ];
-const discoveryResource = [
-  'game', 'fruit', 'vegetable', 'game', 'herb', 'spice', 'timber', 'stone',
-  'dye source', 'copper ore', 'iron ore', 'precious metal'
+
+const discoveryResource = {
+  table: [
+    'game/fruits/vegetables',
+    'game/fruits/vegetables',
+    'game/fruits/vegetables',
+    'game/fruits/vegetables',
+    'herbs/spices/dye source',
+    'herbs/spices/dye source',
+    'timber/stone',
+    'timber/stone',
+    'timber/stone',
+    'copper ore', 'iron ore',
+    'precious metal/precious gems'
+  ],
+  tags: ['_size_', '_visibility_'],
+  template: '_size_ _RESULT_ _visibility_'
+};
+
+const discoveryTracks = [
+  // 1 - 3 faint / unclear
+  // 4 - 6 definite / clear
+  // 7 - 8 multiple
+  // 9 - 10 signs of violence
+  // 11 - 12 trail of blood / other
+  // Age, Creature
 ];
-const discoveryTracks = [];
-const discoveryRemains = [];
-const discoveryStash = [];
-const discoveryEnigmatic = [];
-const discoveryInfrastructure = [];
-const discoveryDwelling = [];
-const discoveryBurial = [];
-const discoveryRuin = [];
+
+const discoveryRemains = [
+  // 1 - 4 bones
+  // 5 - 7 corpse / carcass
+  // 8 - 9 site of violence
+  // 10 junk / refuse
+  // 11 lost supplies / cargo
+  // 12 tools / weapons / armor
+  // Age, Visibility
+];
+
+const discoveryStash = [
+  // 1 - 3 trinkets / coins
+  // 4 - 5 tools / weapons / armor 6 - 7 map
+  // 8 - 9 food / supplies
+  // 10 - 12 treasure(p43)
+];
+
+const discoveryEnigmatic = [
+  // 1 - 4 earthworks
+  // 5 - 8 megalith
+  // 9 - 11 statue / idol / totem
+  // 12 Oddity
+  // Age(1 d8 + 4), Size(1 d8 + 4),
+  // Visibility
+];
+
+const discoveryInfrastructure = [
+  //   1 - 4 track / path
+  //   5 - 8 road
+  //   9 - 10 bridge / ford
+  //   11 mine / quarry
+  //   12 aqueduct / canal / portal
+  //   Creature responsible(1 d4 + 4)
+];
+
+const discoveryDwelling = [
+  // 1 - 3 campsite
+  // 4 - 6 hovel / hut
+  // 7 - 8 farm
+  // 9 - 10 inn / roadhouse
+  // 11 - 12 tower / keep / estate
+  //   Creature responsible(1 d4 + 4)
+];
+
+const discoveryBurial = [
+  // 1 - 2 grave marker / barrow 3 - 4 graveyard / necropolis 5 - 6 tomb / crypt
+  // 7 - 9 shrine
+  // 10 - 11 temple / retreat
+  // 12 great temple
+  // Creature responsible(1 d4 + 4), Alignment, Aspect
+];
+
+const discoveryRuin = [
+  // 1 - 2 Infrastructure(1 d6 + 6)
+  // 3 - 4 Dwelling(1 d8 + 4)
+  // 5 - 6 Burial / Religious(1 d8 + 4)
+  // 7 - 8 Steading(1 d10 + 2)
+  // 9 - 12 Dungeon(pp60 - 61)
+  // Creature responsible(1 d4 + 4), Age(1 d8 + 4), Ruination, Visibility
+];
 
 const discoveryUnnaturalFeatures = {
-  size: 12,
   table: [{
       range: 9,
       table: discoveryArcane
@@ -240,7 +369,6 @@ const discoveryUnnaturalFeatures = {
 };
 
 const discoveryNaturalFeatures = {
-  size: 12,
   table: [{
       range: 2,
       table: discoveryLair
@@ -265,7 +393,6 @@ const discoveryNaturalFeatures = {
 };
 
 const discoveryEvidence = {
-  size: 12,
   table: [{
       range: 6,
       table: discoveryTracks
@@ -282,7 +409,6 @@ const discoveryEvidence = {
 };
 
 const discoveryStructures = {
-  size: 12,
   table: [{
       range: 1,
       table: discoveryEnigmatic
@@ -311,7 +437,6 @@ const discoveryStructures = {
 };
 
 const discoveries = {
-  size: 12,
   table: [{
       range: 1,
       table: discoveryUnnaturalFeatures
@@ -340,6 +465,71 @@ exports.discovery = discoveries;
 /* Data for steadings */
 
 exports.steadings = {};
+
+/*
+Steading . Choose or roll 1d4+4 on the first Creature table (page 49) to see who built it.
+            -------------------------------------------------------------------------------------------------------------------------------------
+1-5 Vi l l age ...............................................................................................................................................................................
+Poor, Steady, Militia, Resource (GM choice) and has an Oath (steading of GM’s choice). If the village is part of a kingdom or empire, choose 1 or roll 1d12:
+1-3 Natural defenses: Safe, -Defenses
+4-6 Abundant resources: +Prosperity, Resource (GM choice), Enmity (GM choice) 7-8 Protected by another steading: Oath (that steading), +Defenses
+9-10 On a major road: Trade (GM choice), +Prosperity
+11 Built around a wizard’s tower: Personage (the wizard), Blight (arcane creatures)
+12 Built on a site of religious significance: Divine, History (GM choice)
+Then, choose 1 problem or roll 1d12:
+1-2 Surrounded by arid or uncultivable land: Need (food)
+3-4 Dedicated to a deity: Religious (that deity), Enmity (steading of opposing deity)
+5-6 Recently at war: -Population, -Prosperity if they fought to the end, -Defenses if they lost
+7-8 Monster problem: Blight (that monster), Need (adventurers)
+9-10 Absorbed another village: +Population, Lawless
+11-12 Remote or unwelcoming: -Prosperity, Dwarven or Elven or other non-human
+-------------------------------------------------------------------------------------------------------------------------------------
+6-8 Town ...............................................................................................................................................................................
+Moderate, Steady, Watch, and Trade (with 2 places of GM’s choice).
+If the town is listed as Trade by another steading, choose 1 or roll 1d12:
+1 Booming: Booming, Lawless
+2-3 At a crossroads: Market, +Prosperity
+4-5 Defended by another steading: Oath (that steading), +Defenses
+6-7 Built around a church: Power (divine)
+8-10 Built around a craft: Craft (your choice), Resource (something required for that craft) 11-12 Built around a military post: +Defenses
+Then, choose 1 problem or roll 1d12:
+1-2 Outgrowing a vital resource: Need (that resource), Trade (a steading with that resource) 3-4 Offers defense to others: Oath (GM choice), -Defenses
+5-6 Outlaw rumored to live there: Personage (the outlaw), Enmity (steading preyed upon) 7-8 Controls a good/service: Exotic (that good/service), Enmity (steading with ambition) 9-10 Suffers from disease: -Population
+11-12 Popular meeting place: +Population, Lawless
+
+9-11 Keep ...............................................................................................................................................................................
+Poor, Shrinking, Guard, Need (supplies), Trade (someplace with supplies), Oath (GM’s choice). If the keep is owed fealty by at least one other steading, choose 1 or roll 1d12:
+1-2 Belongs to a noble family: +Prosperity, Power (political)
+3-4 Run by a skilled commander: Personage (the commander), +Defenses
+5-6 Stands watch over a trade road: +Prosperity, Guild (trade)
+7-8 Used to train special troops: Arcane, -Population
+9-10 Surrounded by fertile land: remove Need (Supplies)
+11-12 Stands on a border: +Defenses, Enmity (steading on the other side of the border)
+Then, choose 1 problem or roll 1d12:
+1-3 Built on a naturally defensible position: Safe, -Population
+4 Formerly occupied by another power: Enmity (steadings of that power)
+5 Safe haven for brigands: Lawless
+6 Built to defend from a specific threat: Blight (that threat)
+7 Has seen horrible bloody war: History (battle), Blight (restless spirits)
+8 Is given the worst of the worst: Need (skilled recruits)
+9-10 Suffers from disease: -Population
+11-12 Popular meeting place: +Population, -Law
+-------------------------------------------------------------------------------------------------------------------------------------
+12 City ...............................................................................................................................................................................
+Moderate, Steady, Guard, Market, Guild (GM’s choice), 2+ Oaths (steadings of GM’s choice) If the city has trade with and fealty from at least 1 steading, choose 1 or roll 1d12:
+1-3 Permanent defenses, such as walls: +Defenses, Oath (GM’s choice) 4-6 Ruled by a single individual: Personage (the ruler), Power (political) 7 Diverse: Dwarven or Elven or both
+8-10 Tradehub:Trade(everynearbysteading),+Prosperity
+11 Ancient, built on top of its own ruins: History (your choice), Divine
+12 Center of learning: Arcane, Craft (your choice), Power (arcane)
+Then, choose 1 problem or roll 1d12:
+1-3 Outgrown its resources: +Population, Need (food)
+4-6 Designs on nearby territory: Enmity (nearby steadings), +Defenses 7-8 Ruled by a theocracy: -Defenses, Power (divine)
+9-10 Ruled by the people: -Defenses, +Population
+11 Supernatural defenses: +Defenses, Blight (related supernatural creatures)
+12 Occupies a place of power: Arcane, Personage (whoever watches the place of power),
+Blight (arcane creatures)
+
+*/
 
 
 /* Data for dangers */
@@ -429,7 +619,7 @@ const dangersTrap = [
 ];
 
 const dangersUnnaturalEntity = {
-  size: 'd12',
+
   table: [{
     range: 8,
     table: dangersUndead,
@@ -446,7 +636,7 @@ const dangersUnnaturalEntity = {
 };
 
 const dangersHazard = {
-  size: 'd12',
+
   table: [{
     range: 2,
     table: dangersUnnatural,
@@ -462,7 +652,7 @@ const dangersHazard = {
 };
 
 exports.dangers = {
-  size: 'd12',
+
   table: [{
     range: 1,
     table: dangersUnnaturalEntity
@@ -597,7 +787,7 @@ const creaturesLegendary = [
 ];
 
 const creaturesBeast = {
-  size: 'd12',
+
   table: [{
     range: 7,
     table: creaturesEarthbound
@@ -612,7 +802,7 @@ const creaturesBeast = {
 const creaturesHuman = ['human'];
 
 const creaturesHumanoid = {
-  size: 'd12',
+
   table: [{
     range: 7,
     table: creaturesCommon
@@ -625,7 +815,7 @@ const creaturesHumanoid = {
   }]
 };
 const creaturesMonster = {
-  size: 'd12',
+
   table: [{
     range: 7,
     table: creaturesUnusual
@@ -639,7 +829,7 @@ const creaturesMonster = {
 };
 
 exports.creatures = {
-  size: 'd12',
+
   table: [{
       range: 4,
       table: creaturesBeast,
@@ -750,7 +940,7 @@ exports.details = {
     'hate/envy',
     'love/admiration',
     '_element_',
-    '_ROLLAGAIN_, _ROLLAGAIN_',
+    '_ROLLAGAIN_ and _ROLLAGAIN_',
   ],
   condition: [
     'being built/being born',
@@ -923,6 +1113,184 @@ exports.details = {
 
 exports.NPCs = {};
 
+/*
+
+NPC
+Roll to determine Context if it hasn’t already been established, then 1d12 for Oc-
+cupation if needed. Use the tables on the next page for traits and followers. Context . Where they are encountered, or where they come from.
+----------------------------------------- -----------------------------------------
+              1-3 Wilderness 4-9 Rural ...................................................... ......................................................
+-----------------------------------------
+1 Criminal -4 1
+2 Criminal -4 2
+3 adventurer/explorer 3
+4 adventurer/explorer 4
+5 hunter/gatherer 5
+6 hunter/gatherer 6
+7 Commoner 7
+8 Commoner 8
+9 ranger/scout 9
+10 ranger/scout 10
+11 soldier/mercenary 11
+beggar/urchin Criminal -1 adventurer/explorer hunter/gatherer Commoner Commoner Commoner Commoner Tradesperson Merchant -1 militia/soldier/guard Official
+10-12 Urban ......................................................
+12 Official 12 .............................................. ..............................................
+1 beggar/urchin 2 beggar/urchin 3 Criminal
+4 Commoner
+5 Commoner
+6 Commoner
+7 Commoner
+8 Tradesperson 9 Merchant
+10 Specialist
+11 militia/soldier/guard
+12 Official ..............................................
+Activity, Alignment, NPC Trait
+Activity, Alignment, Activity, Alignment, NPC Trait NPC Trait
+Occupation . If not already determined by initial roll.
+         -----------------------------------------
+-----------------------------------------
+-----------------------------------------
+1 Criminal ......................................................
+2-6 Commoner ......................................................
+7-8 Tradesperson ......................................................
+1 bandit/brigand/thug 2 bandit/brigand/thug 3 thief
+4 thief
+5 bodyguard/tough 6 bodyguard/tough 7 burglar
+8 burglar
+9 dealer/fence
+10 racketeer
+11 lieutenant
+12 boss
+1 housewife/husband 2 hunter/gatherer
+3 hunter/gatherer
+4 farmer/herder
+5 farmer/herder
+6 farmer/herder
+7 laborer/servant
+8 laborer/servant
+9 driver/porter/guide 10 sailor/soldier/guard 11 clergy/monk
+12 apprentice/adventurer -----------------------------------------
+1 cobbler/furrier/tailor 2 weaver/basketmaker
+3 potter/carpenter
+4 mason/baker/chandler 5 cooper/wheelwright
+6 tanner/ropemaker
+7 smith/tinker
+8 stablekeeper/herbalist
+9 vintner/jeweler
+10 inkeeper/tavernkeeper
+11 artist/actor/minstrel
+12 armorer/weaponsmith
+-----------------------------------------
+-----------------------------------------
+12 Official ......................................................
+9-10 Merchant ......................................................
+11 Specialist ......................................................
+1 general goods/outfitter
+2 general goods/outfitter 2 3 general goods/outfitter 3 4 raw materials 4 5 grain/livestock 5 6 ale/wine/spirits 6 7 clothing/jewelry 7 8 weapons/armor 8 9 spices/tobacco 9 10 labor/slaves 10 11 books/scrolls 11 12 magic supplies/items 12
+52
+1
+undertaker sage/scholar/wizard 2 writer/illuminator 3 perfumer 4 architect/engineer 5 locksmith/clockmaker 6 physician/apothecary 7 navigator/guide 8 alchemist/astrologer 9 spy/diplomat 10 cartographer 11 inventor 12
+1
+town crier
+tax collector armiger/gentry armiger/gentry reeve/sheriff/constable mayor/magistrate priest/bishop/abbot guildmaster knight/templar elder/high priest
+noble (baron, etc.) lord/lady/king/queen
+
+
+NPC Trait
+Roll 1d12 for category and 1d12 for
+prompt if you want something quick to
+say. If you want someone more memo-
+rable, roll once in each category.
+NPC Follower
+Roll 1d12 for each category; reconcile to
+the fiction, tag, and equip as you see fit.
+----------------------------------------------------------------
+................................................................................... 1-3 A liability: Quality -1, +0 tags
+4-9 Competent: Quality +0, +1 tags
+10-11 Fully capable: Quality +1, +2 tags
+12 Exceptional: Quality +2, +4 tags
+1-6 Physical Appearance ...................................................................................
+1 disfigured (missing teeth, eye, etc.) 2 lasting injury (bad leg, arm, etc.)
+3 tattooed/pockmarked/scarred
+4 unkempt/shabby/grubby
+5 big/thick/brawny
+6 small/scrawny/emaciated
+7 notable hair (wild, long, none, etc.)
+8 notable nose (big, hooked, etc.)
+9 notable eyes (blue, bloodshot, etc.)
+10 clean/well-dressed/well-groomed
+11 attractive/handsome/stunning
+12 they are [roll again] despite [a contra-
+----------------------------------------------------------------
+dictory detail of your choice] ----------------------------------------------------------------
+1 loner/alienated/antisocial 2 cruel/belligerent/bully
+3 anxious/fearful/cowardly 4 envious/covetous/greedy 5 alo of/haught y/a r ro ga nt
+6 awkward/shy/self-loathing
+7 orderly/compulsive/controlling
+8 confident/impulsive/reckless
+9 kind/generous/compassionate
+10 easygoing/relaxed/peaceful
+11 cheerful/happy/optimistic
+12 they are [roll again] despite [a contra-
+----------------------------------------------------------------
+7-9 Personality ...................................................................................
+...................................................................................
+1-2 0 (little faith in leader’s cause)
+3-10 +1
+11-12 +2 (great faith in leader’s cause)
+dictory detail of your choice] ----------------------------------------------------------------
+................................................................................... 1 Loot, pillage, and burn
+2 Hold a grudge and seek payback
+3 Question leadership or authority
+4-5 Lord over others
+6-7 Act impulsively
+8-9 Give in to temptation
+10-11 Slack off
+12 Avoid danger or punishment
+----------------------------------------------------------------
+................................................................................... 1 Debauchery
+2 Vengeance
+3-5 Lucre
+6-7 Renown
+8-9 Glory
+10 Affection
+11 Knowledge
+12 Good
+10-12 Quirk ...................................................................................
+Cost
+1 insecure/racist/xenophobic
+2 addict (sweets, drugs, sex, etc.)
+3 phobia (spiders, fire, darkness, etc.)
+4 allergic/asthmatic/chronically ill
+5 skeptic/paranoid
+6 superstitious/devout/fanatical
+7 miser/pack-rat
+8 spendthrift/wastrel
+9 smart aleck/know-it-all
+10 artistic/dreamer/delusional
+11 naive/idealistic
+12 they are [roll again] despite [a contra-
+dictory detail of your choice]
+----------------------------------------------------------------
+Ask the Fates
+----------------------------------------------------------------
+Competence
+Background
+................................................................................... 1-2 Life of servitude/oppression: +Meek
+3 Past their prime: -1 to Quality, +1 Wise 4-5 Has lived a life of danger: +2 tags
+6-9 Unremarkable
+10 Has lived a life of privilege: +1 tag
+11 Specialist: +1 to Quality, -2 tags
+12 Roll twice on this table
+Loya lty
+----------------------------------------------------------------
+Instinct
+Hit Points Damage die
+................................................................................... 1-3 3 HP d4
+4-9 6 HP d6
+10-12 9 HP d8
+
+*/
 
 /* Data for occupations */
 
@@ -942,3 +1310,64 @@ exports.NPCFollowers = {};
 /* Data for dungeons */
 
 exports.dungeons = {};
+
+
+/*
+
+Dungeons
+Roll to determine different details as needed.
+                Dungeon Size
+Dungeon Foundation . Who built it, to what end?
+                -----------------------------------------
+----------------------------------------- -----------------------------------------
+Size Themes Areas* ......................................................
+Builder Function
+1-3 sm. 2/1d4 6/1d6+2
+...................................................... ...................................................... 1 aliens/precursors 1 source/portal
+2 demigod/demon 2 mine
+3-4 natural (caves, etc.) 3-4 tomb/crypt
+5 religious order/cult 5 prison
+6-7 Humanoid (p49) 6-7 lair/den/hideout
+8-9 dwarves/gnomes 8-9 stronghold/sanctuary 10 elves 10 shrine/temple/oracle 11 wizard/madman 11 archive/library
+12 monarch/warlord 12 unknown/mystery
+4-9 md. 3/1d6
+10-11 lg. 4/1d6+1
+12/2d6+4 16/3d6+6 24/4d6+10
+12 huge 5/1d6+2 ......................................................
+*total common and unique
+Dungeon Ruination
+----------------------------------------- 1 arcane disaster
+2 damnation/curse
+3-4 earthquake/fire/flood 5-6 plague/famine/drought 7-8 overrun by monsters 9-10 war/invasion
+11 depleted resources
+12 better prospects elsewhere
+          Dungeon Theme . What’s it all about? Choose or roll according to Dungeon Size. ----------------------------------------- ----------------------------------------- -----------------------------------------
+          1-5 Mundane 6-9 Un usua l 10-12 Extraordinary ...................................................... ...................................................... ......................................................
+1 rot/decay 1 2 torture/agony 2 3 madness 3 4 all is lost 4 5 noble sacrifice 5 6 savage fury 6 7 survival 7 8 criminal activity 8 9 secrets/treachery 9 10 tricks and traps 10 11 invasion/infestation 11 12 factions at war 12
+60
+creation/invention 1 Element (p50) 2 knowledge/learning 3 growth/expansion 4 deepening mystery 5 transformation/change 6 chaos and destruction 7 shadowy forces 8 forbidden knowledge 9 poison/disease 10 corruption/blight 11 impending disaster 12
+scheming evil divination/scrying blasphemy
+arcane research occult forces
+an ancient curse mutation
+the unquiet dead bottomless hunger incredible power unspeakable horrors holy war
+Plumb the Depths
+Dungeon Discovery . A starting point: extrapolate, embellish, integrate.
+----------------------------------------- ----------------------------------------- -----------------------------------------
+                  1-3 Dressing 4-9 Feature 10-12Find ...................................................... ...................................................... ......................................................
+1 junk/debris 1 2 tracks/marks 2 3 signs of battle 3 4 writing/carving 4 5 warning 5 6 dead Creature (p49) 6 7 bones/remains 7 8 book/scroll/map 8 9 broken door/wall 9 10 breeze/wind/smell 10 11 lichen/moss/fungus 11 12 Oddity (p50) 12
+cave-in/collapse 1 pit/shaft/chasm 2 pillars/columns 3 locked door/gate 4 alcoves/niches 5 bridge/stairs/ramp 6 fou nt ai n/well/p o ol 7 puzzle 8 altar/dais/platform 9 statue/idol 10 magic pool/statue/idol 11 connection to another 12 dungeon
+trinkets
+tools weapons/armor supplies/trade goods coins/gems/jewelry poisons/potions adventurer/captive magic item scroll/book
+magic weapon/armor artifact
+roll twice
+
+Dungeon Danger . If they would notice, show signs of an approaching threat. ----------------------------------------- ----------------------------------------- -----------------------------------------
+         1-4 Trap 5-11 Creature (p49) 12 Entity ...................................................... ...................................................... ......................................................
+1 alarm 1 2 ensnaring/paralyzing 2 3 pit 3 4 crushing 4 5 piercing/puncturing 5 6 chopping/slashing 6 7 confusing (maze, etc.) 7 8 gas (poison, etc.) 8 9 Element (p50) 9 10 ambush 10 11 magical 11 12 roll twice 12
+waiting in ambush 1 fighting/squabbling 2 prowling/on patrol 3 looking for food 4 eating/resting 5 guarding 6 on the move 7 searching/scavenging 8 returning to den 9 making plans 10 sleeping 11 dying 12
+alien interloper vermin lord
+criminal mastermind warlord
+high priest
+oracle wizard/witch/alchemist Monster lord (p49) evil spirit/ghost undead lord (lich, etc.) demon
+dark god
+*/
