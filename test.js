@@ -1,14 +1,32 @@
+#!/usr/local/bin/node
+
 'use strict';
 
 /* eslint-env node */
 
 const gen = require('./src/generator');
-
-['creature', 'danger', 'detail', 'discovery', 'dungeon',
+const types = ['creature', 'danger', 'detail', 'discovery', 'dungeon',
   'name', 'npc', 'place', 'region', 'steading', 'treasure'
-].forEach(g => {
-  console.log(gen[g].generate());
-});
+];
+
+if (process.argv.length <= 2) {
+  types.forEach(g => {
+    console.log(`${g}:  ${gen[g].generate()}`);
+  });
+}
+else {
+  const type = process.argv[2];
+
+  if (type in gen) {
+    const times = isNaN(process.argv[3]) ? 1 : process.argv[3];
+    for (let i = 0; i < times; i++) {
+      console.log(gen[type].generate());
+    }
+  }
+  else {
+    console.log(`Ask for one of these types: ${types.join(' ')}`);
+  }
+}
 
 // console.log('Places:\n----------');
 // console.log(gen.place.generate());

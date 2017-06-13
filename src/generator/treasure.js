@@ -28,18 +28,20 @@ const replacers = {
 
 const replaceTreasure = (treasureType, monster) => replacers[treasureType](monster);
 
+const additionalRolls = (monster) => {
+  let add = 0;
+  add += monster.lord ? g.roll('1d4') : 0;
+  add += (monster.ancient || monster.noteworthy) ? g.roll('1d4') : 0;
+  return add;
+};
+
 const treasureRoll = (monster) => {
   if (monster) {
     const dice = monster.damageDie.match(/^(\d*)d(\d+)x?(\d*)$/) ?
       monster.damageDie : '1d6';
 
     let roll = monster.hoarder ? Math.max(g.roll(dice), g.roll(dice)) : g.roll(dice);
-    if (monster.lord) {
-      roll += g.roll('1d4');
-    }
-    if (monster.ancient || monster.noteworthy) {
-      roll += g.roll('1d4');
-    }
+    roll += additionalRolls(monster);
 
     return roll;
   }
@@ -51,6 +53,9 @@ const treasureRoll = (monster) => {
 
 const TREASURE_ROLL_MAX = 18;
 const generateTreasure = (monster) => {
+  // console.log('TEST', g.random(data.magicItem));
+  // console.log('---------');
+
   const roll = Math.min(treasureRoll(monster), TREASURE_ROLL_MAX);
   let treasure = data.treasure[roll]
     .replace(/{([^}]+)}/g, (str, p1) => g.roll(p1))

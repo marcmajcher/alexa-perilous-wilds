@@ -3,13 +3,13 @@
 /* eslint-env node */
 
 const data = require('../data/regions');
+const names = require('./names');
 const g = require('./util');
 
-const getName = () => 'Gary';
+const getName = names.generate;
 const getTerrain = () => g.random(data.terrain);
 const getAdjective = () => g.random(data.adjectives);
 const getNoun = (the = false, possessive = false) => {
-  // TBD: getName for __NAME__
   const noun = g.random(data.nouns);
   if (noun === '__NAME__') {
     return getName();
