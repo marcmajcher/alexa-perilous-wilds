@@ -80,12 +80,12 @@ const ruin = {
     },
     {
       range: 12,
-      name: 'Dungeon(pp60 - 61)'
+      name: 'DUNGEON'
     },
     // Creature responsible(1 d4 + 4), Age(1 d8 + 4), Ruination, Visibility
   ],
   tags: ['creature(1d4+4)', 'age(1d8+4)', 'ruination', 'visibility'],
-  template: '_AAN_ CREATURE\'s _details.age_ _RESULT_, _details.visibility_, ruined by _details.ruination_'
+  template: '_AAN_ _creatures.creature_\'s _details.age_ _RESULT_, _details.visibility_, ruined by _details.ruination_'
 };
 
 const lair = {
@@ -165,7 +165,7 @@ const resource = {
     'copper ore', 'iron ore',
     'precious metal/precious gems'
   ],
-  template: '_details.size_ _RESULT_ _details.visibility_'
+  template: '_details.size_ _RESULT_, _details.visibility_'
 };
 
 const tracks = {
@@ -187,7 +187,7 @@ const tracks = {
       name: 'trail of blood'
     }
   ],
-  template: '_RESULT_ from _AAN_ _details.age_ CREATURE'
+  template: '_RESULT_ from _AAN_ _details.age_ _creatures.creature_'
 };
 
 const remains = {
@@ -214,7 +214,7 @@ const remains = {
       name: 'tools/weapons/armor'
     },
   ],
-  template: '_details.age_ _RESULT_ _details.visibility_'
+  template: '_details.age_ _RESULT_, _details.visibility_'
 };
 
 const stash = {
@@ -286,7 +286,7 @@ const infrastructure = {
     //   Creature responsible(1 d4 + 4)
   ],
   tags: ['_creature_(1d4+4)'],
-  template: '_AAN_ CREATURE\'s _RESULT_'
+  template: '_AAN_ _creatures.creature_\'s _RESULT_'
 };
 
 const dwelling = {
@@ -313,7 +313,7 @@ const dwelling = {
     //   Creature responsible(1 d4 + 4)
   ],
   tags: ['creature(1d4+4)'],
-  template: '_AAN_ CREATURE\'s _RESULT_'
+  template: '_AAN_ _creatures.creature_\'s _RESULT_'
 };
 
 const burial = {
@@ -344,7 +344,7 @@ const burial = {
     // Creature responsible(1 d4 + 4), Alignment, Aspect
   ],
   tags: ['creature(1d4+4)', 'alignment', 'aspect'],
-  template: '_AAN_ CREATURE\'s _RESULT_ of _details.aspect_'
+  template: '_AAN_ _creatures.creature_\'s _RESULT_ of _details.aspect_'
 };
 
 const unnaturalFeature = {
@@ -446,7 +446,7 @@ const discovery = {
     },
     {
       range: 8,
-      name: 'CREATURE'
+      name: '_creatures.creature_'
     },
     {
       range: 12,

@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-const creaturesEarthbound = [
+const earthbound = [
   'termite/tick/louse',
   'snail/slug/worm',
   'ant/centipede/scorpion',
@@ -17,7 +17,7 @@ const creaturesEarthbound = [
   'mammoth/dinosaur',
 ];
 
-const creaturesAirborne = [
+const airborne = [
   'mosquito/firefly',
   'locust/dragonfly/moth',
   'bee/wasp',
@@ -32,7 +32,7 @@ const creaturesAirborne = [
   'pteranodon',
 ];
 
-const creaturesWaterGoing = [
+const watergoing = [
   'insect',
   'jelly/anemone',
   'clam/oyster/snail',
@@ -47,7 +47,7 @@ const creaturesWaterGoing = [
   'whale'
 ];
 
-const creaturesCommon = [
+const common = [
   'halfling+Small',
   'halfling+Small',
   'halfling+Small',
@@ -62,7 +62,7 @@ const creaturesCommon = [
   'elf'
 ];
 
-const creaturesUncommon = [
+const uncommon = [
   'fey+Tiny',
   'catfolk',
   'dogfolk',
@@ -77,120 +77,137 @@ const creaturesUncommon = [
   'giant+Large',
 ];
 
-const creaturesHybrid = [
+const hybrid = [
   'centaur',
   'centaur',
   'werewolf/werebear',
   'werewolf/werebear',
   'werewolf/werebear',
-  'were_beast_',
-  '_human_ + _beast_',
-  '_human_ + _beast_',
-  '_human_ + _beast_',
-  '_human_ + _beast_',
-  '_human_ + _beast_ + _beast_',
-  '_human_ + _beast_ + _beast_',
+  'were_creatures.beast_',
+  '_creatures.beast_ man',
+  '_creatures.beast_ man',
+  '_creatures.beast_ man',
+  '_creatures.beast_ man',
+  '_creatures.beast_ _creatures.beast_ man',
+  '_creatures.beast_ _creatures.beast_ man',
 ];
 
-const creaturesUnusual = [
+const unusual = [
   'plant/fungus',
   'plant/fungus',
   'plant/fungus',
-  'undead _human_',
-  'undead _human_',
-  'undead _humanoid_',
-  '_beast_ + _beast_',
-  '_beast_ + _beast_',
-  '_beast_ + _ability_',
-  '_beast_ + _ability_',
-  '_beast_ + _feature_',
-  '_beast_ + _feature_',
+  'undead _creatures.human_',
+  'undead _creatures.human_',
+  'undead _creatures.humanoid_',
+  '_creatures.beast_ _creatures.beast_',
+  '_creatures.beast_ _creatures.beast_',
+  '_creatures.beast_ _creatures.ability_',
+  '_creatures.beast_ _creatures.ability_',
+  '_creatures.beast_ _creatures.feature_',
+  '_creatures.beast_ _creatures.feature_',
 ];
 
-const creaturesRare = [
+const rare = [
   'slime/ooze+Amorphous',
   'creation+Construct',
-  '_beast_ + _oddity_',
-  '_unnatural_ _entity_',
+  '_creatures.beast_ _creatures.oddity_',
+  '_creatures.unnatural_ _creatures.entity_',
 ];
 
-const creaturesLegendary = [
+const legendary = [
   'dragon/colossus+Huge',
   'dragon/colossus+Huge',
   'dragon/colossus+Huge',
-  '_unusual_ + Huge',
-  '_unusual_ + Huge',
-  '_unusual_ + Huge',
-  '_rare_ + Huge',
-  '_rare_ + Huge',
-  '_rare_ + Huge',
-  '_beast_ dragon',
-  '_unusual_ dragon',
-  '_rare_ dragon',
+  '_creatures.unusual_+Huge',
+  '_creatures.unusual_+Huge',
+  '_creatures.unusual_+Huge',
+  '_creatures.rare_+Huge',
+  '_creatures.rare_+Huge',
+  '_creatures.rare_+Huge',
+  '_creatures.beast_ dragon',
+  '_creatures.unusual_ dragon',
+  '_creatures.rare_ dragon',
 ];
 
-const creaturesBeast = {
+const beast = {
   table: [{
     range: 7,
-    table: creaturesEarthbound
+    table: earthbound
   }, {
     range: 10,
-    table: creaturesAirborne
+    table: airborne
   }, {
     range: 12,
-    table: creaturesWaterGoing
+    table: watergoing
   }]
 };
 
-const creaturesHuman = ['human'];
+const human = ['human'];
 
-const creaturesHumanoid = {
+const humanoid = {
   table: [{
     range: 7,
-    table: creaturesCommon
+    table: common
   }, {
     range: 10,
-    table: creaturesUncommon
+    table: uncommon
   }, {
     range: 12,
-    table: creaturesHybrid
+    table: hybrid
   }]
 };
 
-const creaturesMonster = {
+const monster = {
   table: [{
     range: 7,
-    table: creaturesUnusual
+    table: unusual
   }, {
     range: 10,
-    table: creaturesRare
+    table: rare
   }, {
     range: 12,
-    table: creaturesLegendary
+    table: legendary
   }]
 };
 
-module.exports = {
+const creature = {
   table: [{
       range: 4,
-      table: creaturesBeast,
+      table: beast,
       tags: ['activity', 'disposition', 'number appearing', 'size']
     },
     {
       range: 6,
-      table: creaturesHuman,
-      tags: ['activity', 'alignment', 'disposition', 'number appearing'] // npc tables
+      table: human,
+      tags: ['activity', 'alignment', 'disposition', 'number appearing'] // +npc tables
     },
     {
       range: 8,
-      table: creaturesHumanoid,
-      tags: ['activity', 'alignment', 'disposition', 'number appearing'] // npc tables
+      table: humanoid,
+      tags: ['activity', 'alignment', 'disposition', 'number appearing'] // +npc tables
     },
     {
       range: 12,
-      table: creaturesMonster,
+      table: monster,
       tags: ['activity', 'alignment', 'disposition', 'number appearing', 'size'],
       optionalTags: ['ability', 'adjective', 'age', 'aspect', 'condition', 'feature', 'tags']
     },
   ]
+};
+
+module.exports = {
+  airborne,
+  beast,
+  common,
+  creature,
+  earthbound,
+  human,
+  humanoid,
+  hybrid,
+  legendary,
+  monster,
+  rare,
+  uncommon,
+  unusual,
+  watergoing,
 };

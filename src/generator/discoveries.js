@@ -16,4 +16,4 @@ const getDiscovery = (type) => {
   return entry;
 };
 
-exports.generate = (type, options) => getDiscovery(type, options);
+exports.generate = (type, options) => g.capFirst(getDiscovery(type, options));

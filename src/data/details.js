@@ -60,7 +60,7 @@ module.exports = {
     'colorful',
   ],
   age: [
-    'being born/being built',
+    'newborn/newly built',
     'young/recent',
     'young/recent',
     'young/recent',
@@ -102,7 +102,7 @@ module.exports = {
     '_ROLLAGAIN_ and _ROLLAGAIN_',
   ],
   condition: [
-    'being built/being born',
+    'newly built/newborn',
     'intact/healthy/stable',
     'occupied/active/alert',
     'worn/tired/weak',
