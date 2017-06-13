@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-const data = require('./generator-data').treasure;
+const data = require('../data/treasure');
 const g = require('./util');
 
 /*

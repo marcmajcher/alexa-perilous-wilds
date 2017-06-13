@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-const data = require('./generator-data').region;
+const data = require('../data/regions');
 const g = require('./util');
 
 const getName = () => 'Gary';

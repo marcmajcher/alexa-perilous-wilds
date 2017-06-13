@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-const data = require('./generator-data').place;
+const data = require('../data/places');
 const g = require('./util');
 
 const getName = () => 'Gary';

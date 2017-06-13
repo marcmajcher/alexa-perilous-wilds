@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-const data = require('./names');
+const data = require('../data/names');
 const g = require('./util');
 
 const TYPES = ['male', 'female', 'steading', 'mount'];

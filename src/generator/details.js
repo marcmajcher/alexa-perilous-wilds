@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-const data = require('./generator-data').details;
+const data = require('../data/details');
 const g = require('./util');
 
 const getDetail = (type) => {
