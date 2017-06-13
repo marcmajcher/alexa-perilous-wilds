@@ -7,11 +7,10 @@ const g = require('./util');
 
 /*
   Monster options: {
-    damage die: use one,
+    damageDie: use one,
     hoarder: damage die (use best of two),
-    far from home: add 1d6 rations,
-    lord over others: +1d4 to roll,
-    ancient/noteworthy: +1d4 to roll
+    farFromHome: add 1d6 rations,
+    lord/ancient/noteworthy: +1d4 to roll
   }
 */
 
@@ -62,4 +61,4 @@ generateTreasure = (type = 'treasure', options = {}) => {
   return g.replaceMacros(treasure, macros, options);
 };
 
-exports.generate = (type, options) => generateTreasure(type, options);
+exports.generate = (type, options) => g.capFirst(generateTreasure(type, options));

@@ -67,6 +67,8 @@ const randomFromObject = (obj) => {
   return obj.template ? fillTemplate(obj.template, thing) : thing;
 };
 
+const capFirst = string => string.charAt(0).toUpperCase() + string.slice(1);
+
 random = list => (Array.isArray(list) ? randomFromList(list) : randomFromObject(list));
 
 const replaceMacros = (string, macros, options) =>
@@ -74,6 +76,7 @@ const replaceMacros = (string, macros, options) =>
   .replace(/_([A-Z]+)_/g, (str, p1) => macros[p1](options));
 
 module.exports = {
+  capFirst,
   fillTemplate,
   replaceMacros,
   random,
