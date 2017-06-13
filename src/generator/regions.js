@@ -2,15 +2,15 @@
 
 /* eslint-env node */
 
-const data = require('../data/regions');
+const regions = require('../data/regions');
 const names = require('./names');
 const g = require('./util');
 
 const getName = names.generate;
-const getTerrain = () => g.random(data.terrain);
-const getAdjective = () => g.random(data.adjectives);
+const getTerrain = () => g.random(regions.terrain);
+const getAdjective = () => g.random(regions.adjectives);
 const getNoun = (the = false, possessive = false) => {
-  const noun = g.random(data.nouns);
+  const noun = g.random(regions.nouns);
   if (noun === '__NAME__') {
     return getName();
   }
@@ -34,3 +34,4 @@ const generators = [
 ];
 
 exports.generate = () => g.random(generators)();
+// exports.generate = (type) => (type in regions ? g.random(regions.type) : g.random(generators)());

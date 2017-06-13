@@ -26,6 +26,14 @@ const getAan = (str) => {
   return keyword[0].match(/[aeiou]/i) ? 'an' : 'a';
 };
 
+const multiSplit = (entry) => {
+  if (typeof entry === 'string' && entry.indexOf('/') >= 0) {
+    const options = entry.split('/');
+    entry = options[Math.floor(Math.random() * options.length)];
+  }
+  return entry;
+};
+
 const fillTemplate = (template, result = '') => {
   let output = template.replace(/_RESULT_/g, result);
   output = output.replace(/_(\w+)\.(\w+)_/g, (str, p1, p2) =>
@@ -35,17 +43,13 @@ const fillTemplate = (template, result = '') => {
 };
 
 const randomFromList = (list) => {
-  let entry = list[Math.floor(Math.random() * list.length)];
-  if (typeof entry === 'string' && entry.indexOf('/') >= 0) {
-    const options = entry.split('/');
-    entry = options[Math.floor(Math.random() * options.length)];
-  }
-  return entry.match(/_/) ? fillTemplate(entry) : entry;
+  let entry = multiSplit(list[Math.floor(Math.random() * list.length)]);
+  return (typeof entry === 'string' && entry.match(/_/)) ? fillTemplate(entry) : entry;
 };
 
 const randomFromTable = (entry) => {
   if (entry.name) {
-    return entry.name;
+    return multiSplit(entry.name);
   }
   else if (entry.table) {
     return random(entry.table);
@@ -58,10 +62,10 @@ const randomFromObject = (obj) => {
   const dieRoll = roll(size);
 
   let thing = 'nothing';
-  console.log('OBJ', obj);
   for (let i = 0; i < obj.table.length; i++) {
     if (dieRoll <= obj.table[i].range) {
       thing = randomFromTable(obj.table[i]);
+      break;
     }
   }
 

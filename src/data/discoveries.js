@@ -19,7 +19,7 @@ const arcane = {
     range: 12,
     name: 'source/repository'
   }],
-  template: '_AAN_ _alignment_ _magicType_ _RESULT_'
+  template: '_AAN_ _details.alignment_ _details.magicType_ _RESULT_'
 };
 
 const planar = {
@@ -38,7 +38,7 @@ const planar = {
       name: 'outpost'
     }
   ],
-  template: '_AAN_ _RESULT_ of _alignment_ _element_'
+  template: '_AAN_ _RESULT_ of _details.alignment_ _details.element_'
 };
 
 const divine = {
@@ -58,9 +58,8 @@ const divine = {
     range: 12,
     name: 'presence'
   }],
-  template: '_AAN_ _RESULT_ of _alignment_ _aspect_'
+  template: '_AAN_ _RESULT_ of _details.alignment_ _details.aspect_'
 };
-
 
 const ruin = {
   table: [{
@@ -86,7 +85,7 @@ const ruin = {
     // Creature responsible(1 d4 + 4), Age(1 d8 + 4), Ruination, Visibility
   ],
   tags: ['creature(1d4+4)', 'age(1d8+4)', 'ruination', 'visibility'],
-  template: '_AAN_ _creature_\'s _age_ _RESULT_, _visibility_, ruined by _ruination_'
+  template: '_AAN_ CREATURE\'s _details.age_ _RESULT_, _details.visibility_, ruined by _details.ruination_'
 };
 
 const lair = {
@@ -109,20 +108,20 @@ const lair = {
     range: 12,
     table: ruin
   }],
-  template: '_AAN_ _creature_ _RESULT_, _visibility_'
+  template: '_AAN_ _details.creature_ _RESULT_, _details.visibility_'
 };
 
 const obstacle = [
   'difficult ground', 'difficult ground', 'difficult ground',
   'difficult ground', 'difficult ground', 'cliff', 'crevasse', 'chasm',
-  'ravine', 'gorge', '_oddity_'
+  'ravine', 'gorge', '_details.oddity_'
 ];
 
 const terrainChange = [
-  'limited area of another _TERRAINTYPE_',
-  'limited area of another _TERRAINTYPE_',
-  'limited area of another _TERRAINTYPE_',
-  'limited area of another _TERRAINTYPE_',
+  'limited area of another _regions.terrain_',
+  'limited area of another _regions.terrain_',
+  'limited area of another _regions.terrain_',
+  'limited area of another _regions.terrain_',
   'crevice/hole/pit/cave', 'crevice/hole/pit/cave',
   'altitude change', 'altitude change',
   'canyon', 'valley', 'rise in distance', 'peak in distance'
@@ -141,7 +140,7 @@ const waterFeature = [
 ];
 
 const landmark = [
-  'landmark _waterfeature_',
+  'landmark _discoveries.waterfeature_',
   'ancient tree',
   'giant flowers',
   'grove',
@@ -149,7 +148,7 @@ const landmark = [
   'peak/rock formation/crater',
   'peak/rock formation/crater',
   'peak/rock formation/crater',
-  '_oddity_', '_oddity_',
+  '_details.oddity_', '_details.oddity_',
 ];
 
 const resource = {
@@ -166,7 +165,7 @@ const resource = {
     'copper ore', 'iron ore',
     'precious metal/precious gems'
   ],
-  template: '_size_ _RESULT_ _visibility_'
+  template: '_details.size_ _RESULT_ _details.visibility_'
 };
 
 const tracks = {
@@ -188,7 +187,7 @@ const tracks = {
       name: 'trail of blood'
     }
   ],
-  template: '_RESULT_ from _AAN_ _age_ _creature_'
+  template: '_RESULT_ from _AAN_ _details.age_ CREATURE'
 };
 
 const remains = {
@@ -215,7 +214,7 @@ const remains = {
       name: 'tools/weapons/armor'
     },
   ],
-  template: '_age_ _RESULT_ _visibility_'
+  template: '_details.age_ _RESULT_ _details.visibility_'
 };
 
 const stash = {
@@ -236,7 +235,7 @@ const stash = {
     },
     {
       range: 12,
-      name: '_treasure_'
+      name: '_treasures.treasure_'
     },
   ]
 };
@@ -256,11 +255,11 @@ const enigmatic = {
     },
     {
       range: 12,
-      name: 'Oddity'
+      name: '_details.oddity_'
     },
   ],
   tags: ['age(1d8+4)', 'size(1d8+4)', 'Visibility'],
-  template: '_AAN_ _age_ _size_ _RESULT_, _visibility_'
+  template: '_AAN_ _details.age_ _details.size_ _RESULT_, _details.visibility_'
 };
 
 const infrastructure = {
@@ -287,7 +286,7 @@ const infrastructure = {
     //   Creature responsible(1 d4 + 4)
   ],
   tags: ['_creature_(1d4+4)'],
-  template: '_AAN_ _creature_\'s _RESULT_'
+  template: '_AAN_ CREATURE\'s _RESULT_'
 };
 
 const dwelling = {
@@ -314,7 +313,7 @@ const dwelling = {
     //   Creature responsible(1 d4 + 4)
   ],
   tags: ['creature(1d4+4)'],
-  template: '_AAN_ _creature\'s _RESULT_'
+  template: '_AAN_ CREATURE\'s _RESULT_'
 };
 
 const burial = {
@@ -345,7 +344,7 @@ const burial = {
     // Creature responsible(1 d4 + 4), Alignment, Aspect
   ],
   tags: ['creature(1d4+4)', 'alignment', 'aspect'],
-  template: '_AAN_ _creature_\'s _RESULT_ of _aspect_'
+  template: '_AAN_ CREATURE\'s _RESULT_ of _details.aspect_'
 };
 
 const unnaturalFeature = {
@@ -423,7 +422,7 @@ const structure = {
     },
     {
       range: 8,
-      name: 'steading'
+      name: 'STEADING'
     },
     {
       range: 12,
@@ -447,7 +446,7 @@ const discovery = {
     },
     {
       range: 8,
-      name: '_creatures.creature_'
+      name: 'CREATURE'
     },
     {
       range: 12,
