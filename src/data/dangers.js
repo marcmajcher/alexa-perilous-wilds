@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-const dangersUndead = [
+const undead = [
   'haunt',
   'haunt',
   'wisp',
@@ -17,7 +17,7 @@ const dangersUndead = [
   'spirit lord/spirit master',
 ];
 
-const dangersPlanar = [
+const planar = [
   'imp+Small',
   'imp+Small',
   'imp+Small',
@@ -32,7 +32,7 @@ const dangersPlanar = [
   'devil/elemental lord',
 ];
 
-const dangersDivine = [
+const divine = [
   'agent',
   'agent',
   'agent',
@@ -47,7 +47,7 @@ const dangersDivine = [
   'avatar'
 ];
 
-const dangersUnnatural = [
+const unnatural = [
   'taint',
   'blight',
   'curse',
@@ -62,7 +62,7 @@ const dangersUnnatural = [
   'divine'
 ];
 
-const dangersNatural = [
+const natural = [
   'blinding mist',
   'blinding fog',
   'bog/mire/quicksand',
@@ -74,10 +74,10 @@ const dangersNatural = [
   'disease',
   'flood/fire/tornado',
   'flood/fire/tornado',
-  '_oddity_'
+  '_details.oddity_ hazard'
 ];
 
-const dangersTrap = [
+const trap = [
   'alarm',
   'alarm',
   'ensnaring/paralyzing',
@@ -92,46 +92,58 @@ const dangersTrap = [
   'ambush',
 ];
 
-const dangersUnnaturalEntity = {
+const unnaturalEntity = {
   table: [{
     range: 8,
-    table: dangersUndead,
+    table: undead,
     tags: ['ability', 'activity', 'alignment', 'disposition']
   }, {
     range: 11,
-    table: dangersPlanar,
+    table: planar,
     tags: ['ability', 'activity', 'alignment', 'disposition', 'element', 'feature', 'tag']
   }, {
     range: 12,
-    table: dangersDivine,
+    table: divine,
     tags: ['ability', 'activity', 'alignment', 'aspect', 'disposition', 'element', 'feature', 'tag']
   }]
 };
 
-const dangersHazard = {
+const hazard = {
   table: [{
     range: 2,
-    table: dangersUnnatural,
+    table: unnatural,
     tags: ['aspect', 'visibility']
   }, {
     range: 10,
-    table: dangersNatural
+    table: natural
   }, {
     range: 12,
-    table: dangersTrap,
+    table: trap,
     tags: ['creature', 'aspect', 'visibility']
   }]
 };
 
-module.exports = {
+const danger = {
   table: [{
     range: 1,
-    table: dangersUnnaturalEntity
+    table: unnaturalEntity
   }, {
     range: 6,
-    table: dangersHazard
+    table: hazard
   }, {
     range: 12,
-    table: exports.creatures
+    name: '_creatures.creature_'
   }]
+};
+
+module.exports = {
+  danger,
+  divine,
+  hazard,
+  natural,
+  planar,
+  trap,
+  undead,
+  unnatural,
+  unnaturalEntity,
 };
