@@ -20,13 +20,27 @@ const roll = (dice = '1d6') => {
   return total * times;
 };
 
+const getAan = (str) => {
+  const words = str.split(/\s+/);
+  const keyword = words[words.indexOf('_AAN_') + 1];
+  return keyword[0].match(/[aeiou]/i) ? 'an' : 'a';
+};
+
+const fillTemplate = (template, result = '') => {
+  let output = template.replace(/_RESULT_/g, result);
+  output = output.replace(/_(\w+)\.(\w+)_/g, (str, p1, p2) =>
+    require(`./${p1}`).generate(p2)); // eslint-disable-line global-require
+  output = output.replace(/_AAN_/g, getAan(output));
+  return output;
+};
+
 const randomFromList = (list) => {
   let entry = list[Math.floor(Math.random() * list.length)];
   if (typeof entry === 'string' && entry.indexOf('/') >= 0) {
     const options = entry.split('/');
     entry = options[Math.floor(Math.random() * options.length)];
   }
-  return entry;
+  return entry.match(/_/) ? fillTemplate(entry) : entry;
 };
 
 const randomFromTable = (entry) => {
@@ -43,18 +57,20 @@ const randomFromObject = (obj) => {
   const size = obj.size || '1d12';
   const dieRoll = roll(size);
 
+  let thing = 'nothing';
   for (let i = 0; i < obj.table.length; i++) {
     if (dieRoll <= obj.table[i].range) {
-      return randomFromTable(obj.table[i]);
+      thing = randomFromTable(obj.table[i]);
     }
   }
 
-  return undefined;
+  return obj.template ? fillTemplate(obj.template, thing) : thing;
 };
 
 random = list => (Array.isArray(list) ? randomFromList(list) : randomFromObject(list));
 
 module.exports = {
+  fillTemplate,
   random,
-  roll
+  roll,
 };

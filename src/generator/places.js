@@ -22,7 +22,6 @@ const getNoun = (the = false) => {
 
 const HALF = 0.5;
 const generators = [
-  // () => `The ${getPlace()}`,
   () => `The ${getAdjective()} ${getPlace()}`,
   () => `The ${getPlace()} of ${getNoun(true)}`,
   () => `${getNoun(Math.random() < HALF)}'s ${getPlace()}`,

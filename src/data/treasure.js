@@ -3,67 +3,67 @@
 /* eslint-env node */
 
 const treasure = [
-  'Nothing',
+  'nothing',
   '{2d8} coins',
-  '_UTILITYITEM_',
+  '_treasure.utilityItem_',
   '{4d10} coins',
-  'A small _VALUABLE_ worth {2d10x10} coins',
-  'A minor magical trinket',
-  'A useful _CLUE_',
-  'A bag of {1d4x100} coins',
-  'A small _VALUABLE_ of great value, worth {2d6x100} coins',
-  'A chest of coins and gems, worth {3d6x100} coins',
-  'A magical item, or magical effect',
-  'Several bags of cointaining {2d4x100} coins',
-  'A _SIGNOFOFFICE_ worth at least {3d4x100} coins',
-  'A large _ARTITEM_ worth {4d4x100} coins',
-  'A unique item worth at least {5d4x100} coins',
-  'Everything needed to learn a new spell, and _ROLLAGAIN_',
-  'A _PORTAL_, and _ROLLAGAIN_',
-  'Something relating to one of the characters, and _ROLLAGAIN_',
-  'A hoard! {1d10x1000} coins, and {1d10x10} gems worth {2d6x100} coins each'
+  'a small _VALUABLE_ worth {2d10x10} coins',
+  'a minor magical trinket: _treasure.magicItem_',
+  'a useful _treasure.clue_',
+  'a bag of {1d4x100} coins',
+  'a small _VALUABLE_ of great value, worth {2d6x100} coins',
+  'a chest of coins and gems, worth {3d6x100} coins',
+  '_treasure.magicItem_',
+  'several bags of cointaining {2d4x100} coins',
+  'a _treasure.signOfOffice_ worth at least {3d4x100} coins',
+  'a large _treasure.artItem_ worth {4d4x100} coins',
+  'a unique item worth at least {5d4x100} coins',
+  'everything needed to learn a new spell, and _ROLLAGAIN_',
+  'a _treasure.portal_, and _ROLLAGAIN_',
+  'something relating to one of the characters, and _ROLLAGAIN_',
+  'a hoard! {1d10x1000} coins, and {1d10x10} gems worth {2d6x100} coins each'
 ];
 
-const utilityItems = [
-  'A key', 'A lockpick', 'A potion', 'Some food', 'Some clothing', 'A cloak',
-  'A decanter', 'A cup', 'A small cage', 'A small empty coffer', 'An empty box',
-  'A musical instrument', 'A tool', 'A book', 'A scroll', 'A weapon', 'A staff',
-  'A wand', 'A vase', 'A key', 'Some good food', 'Some clothes', 'An old book',
-  'A piece of armor', 'A shield', 'A helm', 'A mirror', 'A small mirror',
-  'An hourglass', 'A pet', 'A mount', 'A small pet', 'A device',
-  'A small device', 'A construct'
+const utilityItem = [
+  'a key', 'a lockpick', 'a potion', 'some food', 'some clothing', 'a cloak',
+  'a decanter', 'a cup', 'a small cage', 'a small empty coffer', 'an empty box',
+  'a musical instrument', 'a tool', 'a book', 'a scroll', 'a weapon', 'a staff',
+  'a wand', 'a vase', 'a key', 'some good food', 'some clothes', 'An old book',
+  'a piece of armor', 'a shield', 'a helm', 'a mirror', 'a small mirror',
+  'an hourglass', 'a pet', 'a mount', 'a small pet', 'a device',
+  'a small device', 'a construct'
 ];
 
-const artItems = [
+const artItem = [
   'trinket', 'charm', 'painting', 'piece of pottery', 'ring', 'pair of gloves',
   'carpet', 'tapestry', 'statuette', 'idol', 'flag', 'banner', 'bracelet',
   'armband', 'necklace', 'amulet', 'belt', 'harness', 'hat', 'mask', 'orb',
   'sigil', 'rod', 'crown', 'scepter'
 ];
 
-const gems = ['diamond', 'ruby', 'sapphire', 'emerald', 'opal', 'pearl'];
-const clues = ['map', 'note'];
-const portals = ['portal', 'secret path', 'magical portal', 'hidden pathway'];
-const signsOfOffice = ['crown', 'banner', 'signet ring', 'sign of office'];
+const gem = ['diamond', 'ruby', 'sapphire', 'emerald', 'opal', 'pearl'];
+const clue = ['map', 'note'];
+const portal = ['portal', 'secret path', 'magical portal', 'hidden pathway'];
+const signOfOffice = ['crown', 'banner', 'signet ring', 'sign of office'];
 
 const magicItem = {
   table: [{
     range: 8,
-    table: utilityItems
+    table: utilityItem
   }, {
     range: 12,
-    table: artItems
+    table: artItem
   }],
-  template: '_AAN_ _RESULT_ of _ability_'
+  template: '_AAN_ _RESULT_ of _details.abilityNoun_'
 };
 
 module.exports = {
   treasure,
-  utilityItems,
-  artItems,
-  clues,
-  portals,
-  signsOfOffice,
-  gems,
-  magicItem
+  utilityItem,
+  artItem,
+  clue,
+  portal,
+  signOfOffice,
+  gem,
+  magicItem,
 };

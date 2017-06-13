@@ -15,18 +15,14 @@ const g = require('./util');
   }
 */
 
+let generateTreasure;
 const HALF = 0.5;
 const replacers = {
-  UTILITYITEM: () => g.random(data.utilityItems),
-  VALUABLE: () => g.random(Math.random() < HALF ? data.artItems : data.gems),
-  CLUE: () => g.random(data.clues),
-  SIGNOFOFFICE: () => g.random(data.signsOfOffice),
-  ARTITEM: () => g.random(data.artItems),
-  PORTAL: () => g.random(data.portals),
-  ROLLAGAIN: monster => generateTreasure(monster).toLowerCase() // eslint-disable-line no-use-before-define, max-len
+  ROLLAGAIN: (type, monster) => generateTreasure(type, monster),
+  VALUABLE: () => g.random(Math.random() < HALF ? data.artItem : data.gem),
 };
 
-const replaceTreasure = (treasureType, monster) => replacers[treasureType](monster);
+const replaceTreasure = (treasureType, type, monster) => replacers[treasureType](type, monster);
 
 const additionalRolls = (monster) => {
   let add = 0;
@@ -36,13 +32,11 @@ const additionalRolls = (monster) => {
 };
 
 const treasureRoll = (monster) => {
-  if (monster) {
+  if (monster.damageDie) {
     const dice = monster.damageDie.match(/^(\d*)d(\d+)x?(\d*)$/) ?
       monster.damageDie : '1d6';
-
     let roll = monster.hoarder ? Math.max(g.roll(dice), g.roll(dice)) : g.roll(dice);
     roll += additionalRolls(monster);
-
     return roll;
   }
 
@@ -52,16 +46,20 @@ const treasureRoll = (monster) => {
 };
 
 const TREASURE_ROLL_MAX = 18;
-const generateTreasure = (monster) => {
-  // console.log('TEST', g.random(data.magicItem));
-  // console.log('---------');
+generateTreasure = (type = 'treasure', monster = {}) => {
+  let treasure;
+  if (type === 'treasure') {
+    const roll = Math.min(treasureRoll(monster), TREASURE_ROLL_MAX);
+    treasure = g.fillTemplate(data[type][roll]);
+  }
+  else {
+    treasure = g.random(data[type]);
+  }
 
-  const roll = Math.min(treasureRoll(monster), TREASURE_ROLL_MAX);
-  let treasure = data.treasure[roll]
-    .replace(/{([^}]+)}/g, (str, p1) => g.roll(p1))
+  treasure = treasure.replace(/{([^}]+)}/g, (str, p1) => g.roll(p1))
     .replace(/_([A-Z]+)_/g, (str, p1) => replaceTreasure(p1, monster));
 
-  if (monster && monster.farFromHome) {
+  if (monster.farFromHome) {
     const rat = g.roll();
     treasure += ` and ${rat} ration${rat > 1 ? 's' : ''}`;
   }
