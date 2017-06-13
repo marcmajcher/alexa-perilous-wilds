@@ -64,7 +64,7 @@ const randomFromObject = (obj) => {
   let thing = 'nothing';
   for (let i = 0; i < obj.table.length; i++) {
     if (dieRoll <= obj.table[i].range) {
-      thing = randomFromTable(obj.table[i]);
+      thing = fillTemplate(randomFromTable(obj.table[i]));
       break;
     }
   }

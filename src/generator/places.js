@@ -2,15 +2,15 @@
 
 /* eslint-env node */
 
-const data = require('../data/places');
+const places = require('../data/places');
 const names = require('./names');
 const g = require('./util');
 
 const getName = names.generate;
-const getPlace = () => g.random(data.places);
-const getAdjective = () => g.random(data.adjectives);
+const getPlace = () => g.random(places.places);
+const getAdjective = () => g.random(places.adjective);
 const getNoun = (the = false) => {
-  const noun = g.random(data.nouns);
+  const noun = g.random(places.noun);
   if (noun === '__NAME__') {
     return getName();
   }
@@ -29,4 +29,4 @@ const generators = [
   () => `The ${getAdjective()} ${getNoun()}`
 ];
 
-exports.generate = () => g.random(generators)();
+exports.generate = (type) => (type in places ? g.random(places[type]) : g.random(generators)());

@@ -15,12 +15,12 @@ if (process.argv.length <= 2) {
   });
 }
 else {
-  const type = process.argv[2];
+  const [type, subtype] = process.argv[2].split(':');
 
   if (type in gen) {
     const times = isNaN(process.argv[3]) ? 1 : process.argv[3];
     for (let i = 0; i < times; i++) {
-      console.log(gen[type].generate());
+      console.log(gen[type].generate(subtype));
     }
   }
   else {

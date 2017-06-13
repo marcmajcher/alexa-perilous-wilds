@@ -33,5 +33,4 @@ const generators = [
   () => `The ${getAdjective()} ${getTerrain()} of ${getNoun(true)}`
 ];
 
-exports.generate = () => g.random(generators)();
-// exports.generate = (type) => (type in regions ? g.random(regions.type) : g.random(generators)());
+exports.generate = (type) => (type in regions ? g.random(regions[type]) : g.random(generators)());

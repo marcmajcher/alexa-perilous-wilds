@@ -11,7 +11,7 @@ const places = [
   'Tree', 'Vale', 'Valley', 'Village', 'Wall',
 ];
 
-const placeAdjectives = [
+const adjective = [
   'Ancient', 'Ashen', 'Black', 'Bloody', 'Blue', 'Bright', 'Bright', 'Broken',
   'Burning', 'Clouded', 'Copper', 'Cracked', 'Dark', 'Dead', 'Doomed', 'Endless',
   'Fallen', 'Far', 'Fearsome', 'Floating', 'Found', 'Frozen', 'Ghostly', 'Gloomy',
@@ -21,7 +21,7 @@ const placeAdjectives = [
   'Thundering', 'White', 'Withered',
 ];
 
-const placeNouns = [
+const noun = [
   '__NAME__', '_Arm', 'Ash', '_Captain', 'Children', 'Cinder', '_Cleric',
   '_Corpse', 'Courage', 'Crystal', '_Dagger', '_Demon', '_Devil',
   'Doom', 'Eyes', 'Fear', '_Fighter', '_Finger', 'Fire', '_Foot',
@@ -34,6 +34,6 @@ const placeNouns = [
 
 module.exports = {
   places,
-  adjectives: placeAdjectives,
-  nouns: placeNouns
+  adjective,
+  noun
 };
