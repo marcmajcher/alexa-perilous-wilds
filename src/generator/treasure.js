@@ -6,7 +6,7 @@ const data = require('../data/treasure');
 const g = require('./util');
 
 /*
-  Monster: {
+  Monster options: {
     damage die: use one,
     hoarder: damage die (use best of two),
     far from home: add 1d6 rations,
@@ -17,12 +17,10 @@ const g = require('./util');
 
 let generateTreasure;
 const HALF = 0.5;
-const replacers = {
-  ROLLAGAIN: (type, monster) => generateTreasure(type, monster),
+const macros = {
+  ROLLAGAIN: options => generateTreasure(options.type, options),
   VALUABLE: () => g.random(Math.random() < HALF ? data.artItem : data.gem),
 };
-
-const replaceTreasure = (treasureType, type, monster) => replacers[treasureType](type, monster);
 
 const additionalRolls = (monster) => {
   let add = 0;
@@ -40,30 +38,28 @@ const treasureRoll = (monster) => {
     return roll;
   }
 
-  const DOUBLEIT = 6;
   const roll = Math.min(g.roll(), g.roll());
-  return (roll === DOUBLEIT) ? g.roll('3d6') : roll;
+  return (roll === 6) ? g.roll('3d6') : roll; // eslint-disable-line no-magic-numbers
 };
 
 const TREASURE_ROLL_MAX = 18;
-generateTreasure = (type = 'treasure', monster = {}) => {
+generateTreasure = (type = 'treasure', options = {}) => {
+  options.type = type;
   let treasure;
   if (type === 'treasure') {
-    const roll = Math.min(treasureRoll(monster), TREASURE_ROLL_MAX);
+    const roll = Math.min(treasureRoll(options), TREASURE_ROLL_MAX);
     treasure = g.fillTemplate(data[type][roll]);
   }
   else {
     treasure = g.random(data[type]);
   }
 
-  treasure = treasure.replace(/{([^}]+)}/g, (str, p1) => g.roll(p1))
-    .replace(/_([A-Z]+)_/g, (str, p1) => replaceTreasure(p1, monster));
-
-  if (monster.farFromHome) {
+  if (options.farFromHome) {
     const rat = g.roll();
     treasure += ` and ${rat} ration${rat > 1 ? 's' : ''}`;
   }
-  return treasure;
+
+  return g.replaceMacros(treasure, macros, options);
 };
 
-exports.generate = options => generateTreasure(options);
+exports.generate = (type, options) => generateTreasure(type, options);

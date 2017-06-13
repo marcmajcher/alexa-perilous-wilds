@@ -69,8 +69,13 @@ const randomFromObject = (obj) => {
 
 random = list => (Array.isArray(list) ? randomFromList(list) : randomFromObject(list));
 
+const replaceMacros = (string, macros, options) =>
+  string.replace(/{([^}]+)}/g, (str, p1) => roll(p1))
+  .replace(/_([A-Z]+)_/g, (str, p1) => macros[p1](options));
+
 module.exports = {
   fillTemplate,
+  replaceMacros,
   random,
   roll,
 };

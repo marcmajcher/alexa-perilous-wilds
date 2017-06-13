@@ -6,6 +6,8 @@
 /* All generator modules export a method named generate(), which returns a
    random entry from the tables. The generate() method must also take an
    optional parameter, indicating the sub-table to return an entry from.
+   The generate() method may also take a second parameter, which is an
+   object containing options for the generator.
    */
 
 module.exports = {
