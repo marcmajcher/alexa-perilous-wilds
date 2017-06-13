@@ -58,6 +58,7 @@ const randomFromObject = (obj) => {
   const dieRoll = roll(size);
 
   let thing = 'nothing';
+  console.log('OBJ', obj);
   for (let i = 0; i < obj.table.length; i++) {
     if (dieRoll <= obj.table[i].range) {
       thing = randomFromTable(obj.table[i]);

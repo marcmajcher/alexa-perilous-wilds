@@ -37,8 +37,9 @@ const treasureRoll = (monster) => {
     return roll;
   }
 
+  const ROLLAGAIN = 6;
   const roll = Math.min(g.roll(), g.roll());
-  return (roll === 6) ? g.roll('3d6') : roll; // eslint-disable-line no-magic-numbers
+  return (roll === ROLLAGAIN) ? g.roll('3d6') : roll;
 };
 
 const TREASURE_ROLL_MAX = 18;

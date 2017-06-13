@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-const discoveryArcane = {
+const arcane = {
   table: [{
     range: 2,
     name: 'resdiue'
@@ -19,13 +19,10 @@ const discoveryArcane = {
     range: 12,
     name: 'source/repository'
   }],
-  tags: [
-    'alignment', 'magicType'
-  ],
   template: '_AAN_ _alignment_ _magicType_ _RESULT_'
 };
 
-const discoveryPlanar = {
+const planar = {
   table: [{
       range: 4,
       name: 'distortion/warp'
@@ -41,11 +38,10 @@ const discoveryPlanar = {
       name: 'outpost'
     }
   ],
-  tags: ['alignment', 'element'],
   template: '_AAN_ _RESULT_ of _alignment_ _element_'
 };
 
-const discoveryDivine = {
+const divine = {
   table: [{
     range: 3,
     name: 'mark/sign',
@@ -62,11 +58,38 @@ const discoveryDivine = {
     range: 12,
     name: 'presence'
   }],
-  tags: ['alignment', 'aspect'],
   template: '_AAN_ _RESULT_ of _alignment_ _aspect_'
 };
 
-const discoveryLair = {
+
+const ruin = {
+  table: [{
+      range: 2,
+      name: 'Infrastructure(1 d6 + 6)'
+    },
+    {
+      range: 4,
+      name: 'Dwelling(1 d8 + 4)'
+    },
+    {
+      range: 6,
+      name: 'Burial/Religious(1 d8 + 4)'
+    },
+    {
+      range: 8,
+      name: 'Steading(1 d10 + 2)'
+    },
+    {
+      range: 12,
+      name: 'Dungeon(pp60 - 61)'
+    },
+    // Creature responsible(1 d4 + 4), Age(1 d8 + 4), Ruination, Visibility
+  ],
+  tags: ['creature(1d4+4)', 'age(1d8+4)', 'ruination', 'visibility'],
+  template: '_AAN_ _creature_\'s _age_ _RESULT_, _visibility_, ruined by _ruination_'
+};
+
+const lair = {
   table: [{
     range: 3,
     name: 'burrow'
@@ -84,19 +107,18 @@ const discoveryLair = {
     name: 'hive'
   }, {
     range: 12,
-    table: '_ruins_'
+    table: ruin
   }],
-  tags: ['_creature_', '_visibility_'],
   template: '_AAN_ _creature_ _RESULT_, _visibility_'
 };
 
-const discoveryObstacle = [
+const obstacle = [
   'difficult ground', 'difficult ground', 'difficult ground',
   'difficult ground', 'difficult ground', 'cliff', 'crevasse', 'chasm',
   'ravine', 'gorge', '_oddity_'
 ];
 
-const discoveryTerrainChange = [
+const terrainChange = [
   'limited area of another _TERRAINTYPE_',
   'limited area of another _TERRAINTYPE_',
   'limited area of another _TERRAINTYPE_',
@@ -106,7 +128,7 @@ const discoveryTerrainChange = [
   'canyon', 'valley', 'rise in distance', 'peak in distance'
 ];
 
-const discoveryWaterFeature = [
+const waterFeature = [
   'spring/hot spring',
   'waterfall/geyser',
   'creek/stream/brook',
@@ -118,7 +140,7 @@ const discoveryWaterFeature = [
   'sea', 'ocean',
 ];
 
-const discoveryLandmark = [
+const landmark = [
   'landmark _waterfeature_',
   'ancient tree',
   'giant flowers',
@@ -130,7 +152,7 @@ const discoveryLandmark = [
   '_oddity_', '_oddity_',
 ];
 
-const discoveryResource = {
+const resource = {
   table: [
     'game/fruits/vegetables',
     'game/fruits/vegetables',
@@ -144,11 +166,10 @@ const discoveryResource = {
     'copper ore', 'iron ore',
     'precious metal/precious gems'
   ],
-  tags: ['_size_', '_visibility_'],
   template: '_size_ _RESULT_ _visibility_'
 };
 
-const discoveryTracks = {
+const tracks = {
   table: [{
       range: 3,
       name: 'faint tracks/unclear tracks'
@@ -167,11 +188,10 @@ const discoveryTracks = {
       name: 'trail of blood'
     }
   ],
-  tags: ['age', 'creature'],
   template: '_RESULT_ from _AAN_ _age_ _creature_'
 };
 
-const discoveryRemains = {
+const remains = {
   table: [{
       range: 4,
       name: 'bones'
@@ -195,11 +215,10 @@ const discoveryRemains = {
       name: 'tools/weapons/armor'
     },
   ],
-  tags: ['age', 'visibility'],
   template: '_age_ _RESULT_ _visibility_'
 };
 
-const discoveryStash = {
+const stash = {
   table: [{
       range: 3,
       name: 'trinkets/coins'
@@ -222,7 +241,7 @@ const discoveryStash = {
   ]
 };
 
-const discoveryEnigmatic = {
+const enigmatic = {
   table: [{
       range: 4,
       name: 'earthworks'
@@ -244,7 +263,7 @@ const discoveryEnigmatic = {
   template: '_AAN_ _age_ _size_ _RESULT_, _visibility_'
 };
 
-const discoveryInfrastructure = {
+const infrastructure = {
   table: [{
       range: 4,
       name: 'track/path'
@@ -271,7 +290,7 @@ const discoveryInfrastructure = {
   template: '_AAN_ _creature_\'s _RESULT_'
 };
 
-const discoveryDwelling = {
+const dwelling = {
   table: [{
       range: 3,
       name: 'campsite'
@@ -298,7 +317,7 @@ const discoveryDwelling = {
   template: '_AAN_ _creature\'s _RESULT_'
 };
 
-const discoveryBurial = {
+const burial = {
   table: [{
       range: 2,
       name: 'grave marker/barrow'
@@ -329,139 +348,135 @@ const discoveryBurial = {
   template: '_AAN_ _creature_\'s _RESULT_ of _aspect_'
 };
 
-const discoveryRuin = {
-  table: [{
-      range: 2,
-      name: 'Infrastructure(1 d6 + 6)'
-    },
-    {
-      range: 4,
-      name: 'Dwelling(1 d8 + 4)'
-    },
-    {
-      range: 6,
-      name: 'Burial/Religious(1 d8 + 4)'
-    },
-    {
-      range: 8,
-      name: 'Steading(1 d10 + 2)'
-    },
-    {
-      range: 12,
-      name: 'Dungeon(pp60 - 61)'
-    },
-    // Creature responsible(1 d4 + 4), Age(1 d8 + 4), Ruination, Visibility
-  ],
-  tags: ['creature(1d4+4)', 'age(1d8+4)', 'ruination', 'visibility'],
-  template: '_AAN_ _creature_\'s _age_ _RESULT_, _visibility_, ruined by _ruination_'
-};
-
-const discoveryUnnaturalFeatures = {
+const unnaturalFeature = {
   table: [{
       range: 9,
-      table: discoveryArcane
+      table: arcane
     },
     {
       range: 11,
-      table: discoveryPlanar
+      table: planar
     },
     {
       range: 12,
-      table: discoveryDivine
+      table: divine
     }
   ]
 };
 
-const discoveryNaturalFeatures = {
+const naturalFeature = {
   table: [{
       range: 2,
-      table: discoveryLair
+      table: lair
     }, {
       range: 4,
-      table: discoveryObstacle
+      table: obstacle
     }, {
       range: 7,
-      table: discoveryTerrainChange
+      table: terrainChange
     },
     {
       range: 9,
-      table: discoveryWaterFeature
+      table: waterFeature
     }, {
       range: 11,
-      table: discoveryLandmark
+      table: landmark
     }, {
       range: 12,
-      table: discoveryResource
+      table: resource
     }
   ]
 };
 
-const discoveryEvidence = {
+const evidence = {
   table: [{
       range: 6,
-      table: discoveryTracks
+      table: tracks
     },
     {
       range: 10,
-      table: discoveryRemains
+      table: remains
     },
     {
       range: 12,
-      table: discoveryStash
+      table: stash
     },
   ]
 };
 
-const discoveryStructures = {
+const structure = {
   table: [{
       range: 1,
-      table: discoveryEnigmatic
+      table: enigmatic
     },
     {
       range: 3,
-      table: discoveryInfrastructure
+      table: infrastructure
     },
     {
       range: 4,
-      table: discoveryDwelling
+      table: dwelling
     },
     {
       range: 6,
-      table: discoveryBurial
+      table: burial
     },
     {
       range: 8,
-      table: 'steading'
+      name: 'steading'
     },
     {
       range: 12,
-      table: discoveryRuin
+      table: ruin
     },
   ]
 };
 
-const discoveries = {
+const discovery = {
   table: [{
       range: 1,
-      table: discoveryUnnaturalFeatures
+      table: unnaturalFeature
     },
     {
       range: 4,
-      table: discoveryNaturalFeatures
+      table: naturalFeature
     },
     {
       range: 6,
-      table: discoveryEvidence
+      table: evidence
     },
     {
       range: 8,
-      table: 'creature'
+      name: '_creatures.creature_'
     },
     {
       range: 12,
-      table: discoveryStructures
+      table: structure
     },
   ]
 };
 
-exports.discovery = discoveries;
+module.exports = {
+  arcane,
+  burial,
+  discovery,
+  divine,
+  dwelling,
+  enigmatic,
+  evidence,
+  infrastructure,
+  lair,
+  landmark,
+  naturalFeature,
+  obstacle,
+  planar,
+  remains,
+  resource,
+  ruin,
+  stash,
+  structure,
+  terrainChange,
+  tracks,
+  unnaturalFeature,
+  waterFeature,
+};
