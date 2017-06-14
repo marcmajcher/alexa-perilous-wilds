@@ -3,10 +3,10 @@
 ✓ Add treasure generator (p. 43)
   * Add monster options
 
-+ Add discovery generator (p. 44)
-* Add steading generator (p. 46)
-* Add danger generator (p. 48)
-* Add creature generator (p. 49)
+✓ Add discovery generator (p. 44)
+✓ Add steading generator (p. 46)
+✓ Add danger generator (p. 48)
+✓ Add creature generator (p. 49)
 
 ✓ Add details generators (p. 50)
   * Hook up to generator intent with options
