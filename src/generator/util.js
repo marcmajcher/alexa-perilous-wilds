@@ -43,7 +43,7 @@ const fillTemplate = (template, result = '') => {
 };
 
 const randomFromList = (list) => {
-  let entry = multiSplit(list[Math.floor(Math.random() * list.length)]);
+  const entry = multiSplit(list[Math.floor(Math.random() * list.length)]);
   return (typeof entry === 'string' && entry.match(/_/)) ? fillTemplate(entry) : entry;
 };
 

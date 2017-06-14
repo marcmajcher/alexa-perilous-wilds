@@ -29,4 +29,4 @@ const generators = [
   () => `The ${getAdjective()} ${getNoun()}`
 ];
 
-exports.generate = (type) => (type in places ? g.random(places[type]) : g.random(generators)());
+exports.generate = type => (type in places ? g.random(places[type]) : g.random(generators)());
