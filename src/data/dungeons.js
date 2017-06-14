@@ -2,7 +2,13 @@
 
 /* eslint-env node */
 
-module.exports = {};
+module.exports = {
+  dungeon: ['dungeon']
+};
+
+const size = {
+
+};
 
 /*
 
