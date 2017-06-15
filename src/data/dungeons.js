@@ -120,27 +120,48 @@ const danger = {
 };
 
 const dressing = [
-
-  // 1 junk / debris 1 2 tracks / marks 2 3 signs of battle 3 4 writing / carving
-  // 4 5 warning 5 6 dead Creature(p49) 6 7 bones / remains 7 8 book / scroll / map
-  // 8 9 broken door / wall 9 10 breeze / wind / smell 10 11 lichen / moss / fungus
-  // 11 12 Oddity(p50) 12
+  'junk/debris',
+  'tracks/marks',
+  'signs of battle',
+  'writing/carving',
+  'warning',
+  'dead CREATURE',
+  'bones/remains',
+  'book/scroll/map',
+  'broken door/broken wall',
+  'breeze/wind/smell',
+  'lichen/moss/fungus',
+  'ODDITY',
 ];
 
 const feature = [
-  // cave - in /collapse 1 pit/shaft / chasm 2 pillars / columns 3 locked door / gate
-  // 4 alcoves / niches 5 bridge / stairs / ramp 6 fou nt ai n / well / p o ol 7 puzzle
-  // 8 altar / dais / platform 9 statue / idol 10 magic pool / statue / idol
-  // 11 connection to another 12 dungeon
+  'cave-in/collapse',
+  'pit/shaft/chasm',
+  'pillars/columns',
+  'locked door/locked gate',
+  'alcoves/niches',
+  'bridge/stairs/ramp',
+  'fountain/pool/well',
+  'puzzle',
+  'altar/dais/platform',
+  'statue/idol',
+  'magic pool/magic statue/magic idol',
+  'connection to another dungeon'
 ];
 
 const find = [
-  // trinkets
-  // tools weapons / armor supplies / trade goods coins / gems / jewelry poisons / potions
-  // adventurer / captive magic item scroll / book
-  // magic weapon / armor artifact
-  // roll twice
-
+  'trinkets',
+  'tools',
+  'weapons/armor',
+  'supplies/trade goods',
+  'coins/gems/jewelry',
+  'poisons/potions',
+  'adventurer/captive',
+  'magic item',
+  'scroll/book',
+  'magic weapon/magic armor',
+  'artifact',
+  'ROLL TWICE'
 ];
 
 const discovery = {
@@ -156,31 +177,39 @@ const discovery = {
   }]
 };
 
-/*
 
+const mundane = [
+  // 1 rot/decay 1 2 torture/agony 2 3 madness 3 4 all is lost 4 5 noble sacrifice
+  // 5 6 savage fury 6 7 survival 7 8 criminal activity 8 9 secrets/treachery
+  // 9 10 tricks and traps 10 11 invasion/infestation 11 12 factions at war 12
 
+];
 
+const unusual = [
+  // creation/invention 1 Element (p50) 2 knowledge/learning 3 growth/expansion
+  // 4 deepening mystery 5 transformation/change 6 chaos and destruction
+  // 7 shadowy forces 8 forbidden knowledge 9 poison/disease 10 corruption/blight
+  // 11 impending disaster 12
 
+];
 
-          Dungeon Theme . What’s it all about? Choose or roll according to Dungeon Size.
-          1-5 Mundane 6-9 Un usua l 10-12 Extraordinary
-1 rot/decay 1 2 torture/agony 2 3 madness 3 4 all is lost 4 5 noble sacrifice
-5 6 savage fury 6 7 survival 7 8 criminal activity 8 9 secrets/treachery
-9 10 tricks and traps 10 11 invasion/infestation 11 12 factions at war 12
-60
-creation/invention 1 Element (p50) 2 knowledge/learning 3 growth/expansion
-4 deepening mystery 5 transformation/change 6 chaos and destruction
-7 shadowy forces 8 forbidden knowledge 9 poison/disease 10 corruption/blight
-11 impending disaster 12
-scheming evil divination/scrying blasphemy
-arcane research occult forces
-an ancient curse mutation
-the unquiet dead bottomless hunger incredible power unspeakable horrors holy war
-Plumb the Depths
-Dungeon Discovery . A starting point: extrapolate, embellish, integrate.
+const extraordinary = [
+  // scheming evil divination/scrying blasphemy
+  // arcane research occult forces
+  // an ancient curse mutation
+  // the unquiet dead bottomless hunger incredible power unspeakable horrors holy war
 
+];
 
-
-
-*/
-*/
+const theme = {
+  table: [{
+    range: 5,
+    table: mundane
+  }, {
+    range: 9,
+    table: unusual
+  }, {
+    range: 12,
+    table: extraordinary
+  }]
+};
